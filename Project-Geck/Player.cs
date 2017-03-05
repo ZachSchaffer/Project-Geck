@@ -19,13 +19,13 @@ namespace Geck
         public String FileName = String.Empty;
         int SpecialPoints = 5;
 
-        static int Str = 5;
-        static int Per = 5;
-        static int End = 5;
-        static int Cha = 5;
-        static int Int = 5;
-        static int Agi = 5;
-        static int Luc = 5;
+        int Str = 5;
+        int Per = 5;
+        int End = 5;
+        int Cha = 5;
+        int Int = 5;
+        int Agi = 5;
+        int Luc = 5;
 
         int Barter = 0;
         int Energy_Weapons = 0;
@@ -55,7 +55,7 @@ namespace Geck
             new Perk("Retention","Skill magazines now last longer."), //idk
             new Perk("Swift Learner","You gain an additional 10% XP whenever XP is earned."), //maybe code idk
             new Perk("Gun Nut", 5, 5, "Guns", "Repair", "You gain plus 5 to Guns and Repair."),
-            new Perk("Cannibal","The player can eat the corpses of members of their same race in order to regain HP, at the cost of Karma."), //ask how much karma
+            new Perk("Cannibal","The player can eat the corpses of members of their same race in order to regain maxHP, at the cost of Karma."), //ask how much karma
             new Perk("Child At Heart","You have an easier time connecting with and convincing children."),
             new Perk("Educated", "You gain +1 skill points every time you other time you advance in level."), //Make sure you code for this shit
             new Perk("Entomologist","You do an additional 25% damage every time you attack a mutated insect."),
@@ -87,7 +87,7 @@ namespace Geck
             new Perk("Plasma Spaz","The AP cost for using plasma weapons is reduced by 20%."),
             new Perk("Ghastly Scavenger","The player can now eat the corpses of other player races. This comes at an additional cost of Karma."), //karma
             new Perk("Hit the Deck","You gain 25 DR against all explosive damage."),
-            new Perk("Life Giver", 30, "HP", "You gain 30 HP."),
+            new Perk("Life Giver", 30, "maxHP", "You gain 30 maxHP."),
             new Perk("Piercing Strike","All of your unarmed and melee attacks negate 15 of your enemy’s DR."),
             new Perk("Pyromaniac","You do 50% more damage with fire-based weapons."),
             new Perk("Robotics Expert","You do 25% more damage to robots. You can also sneak up behind them and disable them."),
@@ -144,13 +144,13 @@ namespace Geck
         //The list of the player's taken perks
         List<Perk> playerperks = new List<Perk>();
 
+        List<Perk> Traits = new List<Perk>();
 
-
-        String Name = String.Empty;
-        String Gender = String.Empty;
-        String Race = String.Empty;
+        private String name = String.Empty;
+        String gender = String.Empty;
+        String race = String.Empty;
         String CurrencyName = String.Empty;
-        int Karma = 0;
+        int karma = 0;
         int Currency = 0;
         int Level = 1;
         int Experience = 0;
@@ -160,7 +160,8 @@ namespace Geck
         int Crit_Chance = 0; //fill
         int Crit_Damage_Percent = 100;
         int DR = 0; //fill
-        int HP = 0; //fill
+        int maxHP = 10; //fill
+        int currentHP = 7;
         int Skill_Points = 0;
         int Skill_Points_On_Level = 0;
         int Limb_Damage_Percent = 100;
@@ -185,7 +186,7 @@ namespace Geck
 
         }
 
-        ArrayList Traits = new ArrayList();
+        
 
         public void SetAttribute(String id, int val)
         {
@@ -273,8 +274,8 @@ namespace Geck
             if (id.Equals("Crit_Chance"))
                 Crit_Chance = val;
 
-            if (id.Equals("HP"))
-                HP = val;
+            if (id.Equals("maxHP"))
+                maxHP = val;
 
             if (id.Equals("AP"))
                 AP = val;
@@ -374,8 +375,8 @@ namespace Geck
             if (id.Equals("Crit_Chance"))
                 return Crit_Chance;
 
-            if (id.Equals("HP"))
-                return HP;
+            if (id.Equals("maxHP"))
+                return maxHP;
 
             if (id.Equals("AP"))
                 return AP;
@@ -389,6 +390,30 @@ namespace Geck
             else
                 return -1;
 
+        }
+
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public String Race
+        {
+            get { return race; }
+            set { race = value; }
+        }
+
+        public String Gender
+        {
+            get { return gender; }
+            set { gender = value; }
+        }
+
+        public int Karma
+        {
+            get { return karma; }
+            set { karma = value; }
         }
 
         public List<String> GetSkillReport()
@@ -421,14 +446,19 @@ namespace Geck
             return SpecialPoints;
         }
 
+        /// <summary>
+        /// Will attempt to apply all perks that modify a direct attriubte or prompt the user for input.
+        /// </summary>
         public void ApplyPerks()
         {
 
             foreach (Perk i in playerperks)
             {
                 if(!i.applied)
-
                 {
+
+                    //These if statements check if the perk modifies one two or three values respctively, and then checks for perks that require user input.
+                    //TODO: Let the user add their own? 
 
                     if (i.GetPerkType() == 2)
                     {
@@ -491,35 +521,6 @@ namespace Geck
             return null;
         }
 
-        public void SetName(String name)
-        {
-            Name = name;
-        }
-
-        public void SetGender(String gender)
-        {
-            Gender = gender;
-        }
-
-        public void SetRace(String race)
-        {
-            Race = race;
-        }
-
-        public String GetName()
-        {
-            return Name;
-        }
-
-        public String GetGender()
-        {
-            return Gender;
-        }
-
-        public String GetRace()
-        {
-            return Race;
-        }
 
         public List<Perk> GetAllPerks()
         {
@@ -541,8 +542,8 @@ namespace Geck
             objWriter.WriteStartElement("Player");
 
             //Write Player Info
-            objWriter.WriteElementString("Name", Name);
-            objWriter.WriteElementString("Gender", Gender);
+            objWriter.WriteElementString("name", name);
+            objWriter.WriteElementString("Gender", gender);
             objWriter.WriteElementString("Race", Race);
             objWriter.WriteElementString("Karma", Karma.ToString());
             objWriter.WriteElementString("CurrencyType", CurrencyName);
@@ -602,10 +603,10 @@ namespace Geck
             XmlNode objXmlCharacter = objXmlDocument.SelectSingleNode("/Player");
             
             //Load Player Info
-            objXmlCharacter.TryGetStringFieldQuickly("Name", ref Name);
-            objXmlCharacter.TryGetStringFieldQuickly("Gender", ref Gender);
-            objXmlCharacter.TryGetStringFieldQuickly("Race", ref Race);
-            objXmlCharacter.TryGetInt32FieldQuickly("Karma", ref Karma);
+            objXmlCharacter.TryGetStringFieldQuickly("name", ref name);
+            objXmlCharacter.TryGetStringFieldQuickly("Gender", ref gender);
+            objXmlCharacter.TryGetStringFieldQuickly("Race", ref race);
+            objXmlCharacter.TryGetInt32FieldQuickly("Karma", ref karma);
             objXmlCharacter.TryGetStringFieldQuickly("CurrencyType", ref CurrencyName);
             objXmlCharacter.TryGetInt32FieldQuickly("Currency", ref Currency);
 

@@ -95,7 +95,7 @@ namespace Geck
                 player.Load();
                 this.player = player;
 
-                frmCareer career= new frmCareer(player)
+                frmCareer career = new frmCareer(player)
                 {
                     MdiParent = this,
                     WindowState = FormWindowState.Maximized
@@ -141,7 +141,7 @@ namespace Geck
         private void saveCharacterToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if(String.IsNullOrEmpty(player.GetName()))
+            if(String.IsNullOrEmpty(player.Name))
             {
                 MessageBox.Show("You must create a character first!");
             }
@@ -156,7 +156,7 @@ namespace Geck
                 strShowFileName = strFile[strFile.Length - 1];
 
                 if (string.IsNullOrEmpty(strShowFileName))
-                    strShowFileName = player.GetName();
+                    strShowFileName = player.Name;
 
                 saveFileDialog.FileName = strShowFileName;
 

@@ -67,15 +67,15 @@
             // 
             this.newCharacterToolStripMenuItem.Image = global::Geck.Properties.Resources.page;
             this.newCharacterToolStripMenuItem.Name = "newCharacterToolStripMenuItem";
-            this.newCharacterToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.newCharacterToolStripMenuItem.Text = "New Character";
+            this.newCharacterToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.newCharacterToolStripMenuItem.Text = "New Simple Character";
             this.newCharacterToolStripMenuItem.Click += new System.EventHandler(this.newCharacterToolStripMenuItem_Click);
             // 
             // loadCharacterToolStripMenuItem
             // 
             this.loadCharacterToolStripMenuItem.Image = global::Geck.Properties.Resources.folder_page;
             this.loadCharacterToolStripMenuItem.Name = "loadCharacterToolStripMenuItem";
-            this.loadCharacterToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.loadCharacterToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.loadCharacterToolStripMenuItem.Text = "Load Character";
             this.loadCharacterToolStripMenuItem.Click += new System.EventHandler(this.loadCharacterToolStripMenuItem_Click);
             // 
@@ -83,7 +83,7 @@
             // 
             this.saveCharacterToolStripMenuItem.Image = global::Geck.Properties.Resources.disk;
             this.saveCharacterToolStripMenuItem.Name = "saveCharacterToolStripMenuItem";
-            this.saveCharacterToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.saveCharacterToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.saveCharacterToolStripMenuItem.Text = "Save Character";
             this.saveCharacterToolStripMenuItem.Click += new System.EventHandler(this.saveCharacterToolStripMenuItem_Click);
             // 

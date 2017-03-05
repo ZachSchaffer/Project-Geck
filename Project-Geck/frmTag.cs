@@ -47,7 +47,7 @@ namespace Geck
             player.SetAttribute("Survival", ((int)(((2 + (player1.GetAttribute("End") * 2) + Math.Round(((decimal)player1.GetAttribute("Luc") / 2), MidpointRounding.AwayFromZero))))));
             player.SetAttribute("Unarmed", ((int)(((2 + (player1.GetAttribute("End") * 2) + Math.Round(((decimal)player1.GetAttribute("Luc") / 2), MidpointRounding.AwayFromZero))))));
 
-            if(player.GetRace().Equals("Nightkin"))
+            if(player.Race.Equals("Nightkin"))
             {
                 player.SetAttribute("Guns", 30);
                 player.SetAttribute("Sneak", 30);
@@ -181,7 +181,7 @@ namespace Geck
 
             label18.Text = ((int)(((2 + (player.GetAttribute("Agi") * 2) + Math.Round(((decimal)player.GetAttribute("Luc") / 2), MidpointRounding.AwayFromZero)))) + 15).ToString();
 
-            if (player.GetRace().Equals("Nightkin"))
+            if (player.Race.Equals("Nightkin"))
             {
                 label18.Text = "45";
 
@@ -352,7 +352,7 @@ namespace Geck
 
             label24.Text = ((int)(((2 + (player.GetAttribute("Agi") * 2) + Math.Round(((decimal)player.GetAttribute("Luc") / 2), MidpointRounding.AwayFromZero)))) + 15).ToString();
 
-            if (player.GetRace().Equals("Nightkin"))
+            if (player.Race.Equals("Nightkin"))
             {
                 label24.Text = "45";
 
@@ -485,7 +485,7 @@ namespace Geck
             label26.Text = ((int)(((2 + (player.GetAttribute("End") * 2) + Math.Round(((decimal)player.GetAttribute("Luc") / 2), MidpointRounding.AwayFromZero))))).ToString();
             label27.Text = ((int)(((2 + (player.GetAttribute("End") * 2) + Math.Round(((decimal)player.GetAttribute("Luc") / 2), MidpointRounding.AwayFromZero))))).ToString();
 
-            if (player.GetRace().Equals("Nightkin"))
+            if (player.Race.Equals("Nightkin"))
             {
                 label18.Text = "30";
                 label24.Text = "30";
@@ -528,7 +528,7 @@ namespace Geck
                     player.SetAttribute("Guns", ((int)(((2 + (player.GetAttribute("Agi") * 2) + Math.Round(((decimal)player.GetAttribute("Luc") / 2), MidpointRounding.AwayFromZero))))) + 15);
                     player.GunsTagged = true;
 
-                    if (player.GetRace().Equals("Nightkin"))
+                    if (player.Race.Equals("Nightkin"))
                     {
                         player.SetAttribute("Guns", 45);
                     }
@@ -575,7 +575,7 @@ namespace Geck
                     player.SetAttribute("Sneak", ((int)(((2 + (player.GetAttribute("Agi") * 2) + Math.Round(((decimal)player.GetAttribute("Luc") / 2), MidpointRounding.AwayFromZero))))) + 15);
                     player.SneakTagged = true;
 
-                    if (player.GetRace().Equals("Nightkin"))
+                    if (player.Race.Equals("Nightkin"))
                     {
                         player.SetAttribute("Sneak", 45);
 

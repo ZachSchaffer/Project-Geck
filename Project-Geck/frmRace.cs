@@ -260,28 +260,28 @@ namespace Geck
             player.SetAttribute("Int", finalspec[4]);
             player.SetAttribute("Agi", finalspec[5]);
             player.SetAttribute("Luc", finalspec[6]);
-            player.SetName(textBox1.Text);
+            player.Name = (textBox1.Text);
 
             if (radioButton1.Checked)
-                player.SetGender("Male");
+                player.Gender=("Male");
 
             if (radioButton2.Checked)
-                player.SetGender("Female");
+                player.Gender=("Female");
 
 
             if(comboBox1.SelectedIndex == 0)
             {
                 if (listBox1.SelectedIndex == 0)
-                    player.SetRace("African American");
+                    player.Race=("African American");
 
                 if (listBox1.SelectedIndex == 1)
-                    player.SetRace("Asian");
+                    player.Race=("Asian");
 
                 if (listBox1.SelectedIndex == 2)
-                    player.SetRace("Caucasian");
+                    player.Race=("Caucasian");
 
                 if (listBox1.SelectedIndex == 3)
-                    player.SetRace("Hispanic");
+                    player.Race=("Hispanic");
             }
 
 
@@ -293,14 +293,14 @@ namespace Geck
                     player.AddPerk(81);
                     player.AddPerk(82);
                     player.AddPerk(83);
-                    player.SetRace("Ghoul");
+                    player.Race=("Ghoul");
 
                 }
 
                 if (listBox1.SelectedIndex == 1)
                 {
                     player.AddPerk(84);
-                    player.SetRace("Glowing One");
+                    player.Race=("Glowing One");
                 }
             }
 
@@ -311,21 +311,21 @@ namespace Geck
                 {
                     player.AddPerk(85);
                     player.AddPerk(86);
-                    player.SetRace("First Generation Super Mutant");
+                    player.Race=("First Generation Super Mutant");
                 }
 
                 if (listBox1.SelectedIndex == 1)
                 {
                     player.AddPerk(87);
                     player.AddPerk(88);
-                    player.SetRace("Second Generation Super Mutant");
+                    player.Race=("Second Generation Super Mutant");
                 }
 
                 if (listBox1.SelectedIndex == 2)
                 {                
                     player.AddPerk(89);
                     player.AddPerk(90);
-                    player.SetRace("Nightkin");
+                    player.Race=("Nightkin");
                 }
                 
             }
