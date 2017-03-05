@@ -95,15 +95,14 @@ namespace Geck
                 player.Load();
                 this.player = player;
 
-                frmCreate frmCharacter = new frmCreate(objCharacter)
+                frmCareer career= new frmCareer(player)
                 {
                     MdiParent = this,
-                    WindowState = FormWindowState.Maximized,
-                    Loading = true
+                    WindowState = FormWindowState.Maximized
                 };
-                frmCharacter.Show();
-
+                career.Show();
             }
+           
         }
 
         private void newCharacterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,8 +128,9 @@ namespace Geck
                     }
 
                     frmCareer career = new frmCareer(player);
+                    career.WindowState = this.WindowState;
+                    career.MdiParent = this;
                     career.Show();
-                    this.Close();
 
                 }
             }

@@ -26,6 +26,20 @@ namespace Geck
 
         }
 
+        private void splitKarmaNuyen_Panel1_Resize(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitKarmaNuyen_Panel2_Resize(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmdAddMugshot_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
