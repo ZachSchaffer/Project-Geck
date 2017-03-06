@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.XPath;
 using System.IO;
 
 
 namespace Geck
 {
- 
+
     public partial class frmMain : Form
     {
         
@@ -125,12 +117,20 @@ namespace Geck
                     if(Tag.DialogResult == DialogResult.OK)
                     {
                         this.player = player;
+                        player.created = true;
+                        player.AddPerk("Intense Training");
+
+                        frmCareer career = new frmCareer(player)
+                        {
+                            MdiParent = this,
+                            WindowState = FormWindowState.Maximized
+                        };
+
+                        career.Show();
+
                     }
 
-                    frmCareer career = new frmCareer(player);
-                    career.WindowState = this.WindowState;
-                    career.MdiParent = this;
-                    career.Show();
+
 
                 }
             }

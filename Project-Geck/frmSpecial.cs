@@ -27,6 +27,19 @@ namespace Geck
             lblAgi.Text = player.GetAttribute("Agi").ToString();
             lblLuc.Text = player.GetAttribute("Luc").ToString();
             lblSpecialPointsRemaining.Text = player1.GetSpecialPoints().ToString();
+
+            if (player.created)
+            {
+                button2.Enabled = false;
+                button3.Enabled = false;
+                button5.Enabled = false;
+                button7.Enabled = false;
+                button9.Enabled = false;
+                button11.Enabled = false;
+                button13.Enabled = false;
+                button15.Enabled = false;
+            }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)

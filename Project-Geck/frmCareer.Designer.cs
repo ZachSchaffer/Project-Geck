@@ -32,25 +32,26 @@
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.tabCharacterTabs = new System.Windows.Forms.TabControl();
             this.tabCommon = new System.Windows.Forms.TabPage();
-            this.tabSkills = new System.Windows.Forms.TabPage();
-            this.tabInfo = new System.Windows.Forms.TabControl();
-            this.tabOtherInfo = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabStatus = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.lblHP = new System.Windows.Forms.Label();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabSkills = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabInfo = new System.Windows.Forms.TabControl();
+            this.tabOtherInfo = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
             this.splitMain.SuspendLayout();
             this.tabCharacterTabs.SuspendLayout();
             this.tabCommon.SuspendLayout();
-            this.tabInfo.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabStatus.SuspendLayout();
+            this.tabInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitMain
@@ -104,6 +105,71 @@
             this.tabCommon.Tag = "Tab_Common";
             this.tabCommon.Text = "Stats";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabStatus);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(3, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(865, 602);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabStatus
+            // 
+            this.tabStatus.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.tabStatus.Controls.Add(this.label1);
+            this.tabStatus.Controls.Add(this.lblHP);
+            this.tabStatus.Controls.Add(this.progressBar2);
+            this.tabStatus.Controls.Add(this.progressBar1);
+            this.tabStatus.Location = new System.Drawing.Point(4, 22);
+            this.tabStatus.Name = "tabStatus";
+            this.tabStatus.Padding = new System.Windows.Forms.Padding(3);
+            this.tabStatus.Size = new System.Drawing.Size(857, 576);
+            this.tabStatus.TabIndex = 0;
+            this.tabStatus.Text = "Status";
+            this.tabStatus.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // lblHP
+            // 
+            this.lblHP.AutoSize = true;
+            this.lblHP.Location = new System.Drawing.Point(158, 12);
+            this.lblHP.Name = "lblHP";
+            this.lblHP.Size = new System.Drawing.Size(35, 13);
+            this.lblHP.TabIndex = 2;
+            this.lblHP.Text = "label1";
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.Enabled = false;
+            this.progressBar2.Location = new System.Drawing.Point(518, 28);
+            this.progressBar2.MarqueeAnimationSpeed = 10;
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(317, 23);
+            this.progressBar2.TabIndex = 1;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(25, 28);
+            this.progressBar1.MarqueeAnimationSpeed = 10;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(317, 23);
+            this.progressBar1.TabIndex = 0;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(857, 576);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "tabPage3";
+            // 
             // tabSkills
             // 
             this.tabSkills.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -113,6 +179,16 @@
             this.tabSkills.TabIndex = 17;
             this.tabSkills.Tag = "Tab_Skills";
             this.tabSkills.Text = "Items";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(868, 608);
+            this.tabPage1.TabIndex = 18;
+            this.tabPage1.Text = "Data";
             // 
             // tabInfo
             // 
@@ -137,79 +213,14 @@
             this.tabOtherInfo.Tag = "Tab_OtherInfo";
             this.tabOtherInfo.Text = "Quick Stats";
             // 
-            // tabPage1
+            // label1
             // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(868, 608);
-            this.tabPage1.TabIndex = 18;
-            this.tabPage1.Text = "Data";
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabStatus);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(3, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(865, 602);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabStatus
-            // 
-            this.tabStatus.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tabStatus.Controls.Add(this.lblHP);
-            this.tabStatus.Controls.Add(this.progressBar2);
-            this.tabStatus.Controls.Add(this.progressBar1);
-            this.tabStatus.Location = new System.Drawing.Point(4, 22);
-            this.tabStatus.Name = "tabStatus";
-            this.tabStatus.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStatus.Size = new System.Drawing.Size(857, 576);
-            this.tabStatus.TabIndex = 0;
-            this.tabStatus.Text = "Status";
-            this.tabStatus.Click += new System.EventHandler(this.tabPage2_Click);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(857, 576);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "tabPage3";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(25, 28);
-            this.progressBar1.MarqueeAnimationSpeed = 10;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(317, 23);
-            this.progressBar1.TabIndex = 0;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
-            // 
-            // progressBar2
-            // 
-            this.progressBar2.Enabled = false;
-            this.progressBar2.Location = new System.Drawing.Point(518, 28);
-            this.progressBar2.MarqueeAnimationSpeed = 10;
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(317, 23);
-            this.progressBar2.TabIndex = 1;
-            // 
-            // lblHP
-            // 
-            this.lblHP.AutoSize = true;
-            this.lblHP.Location = new System.Drawing.Point(158, 12);
-            this.lblHP.Name = "lblHP";
-            this.lblHP.Size = new System.Drawing.Size(35, 13);
-            this.lblHP.TabIndex = 2;
-            this.lblHP.Text = "label1";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(369, 113);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
             // 
             // frmCareer
             // 
@@ -229,10 +240,10 @@
             this.splitMain.ResumeLayout(false);
             this.tabCharacterTabs.ResumeLayout(false);
             this.tabCommon.ResumeLayout(false);
-            this.tabInfo.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabStatus.ResumeLayout(false);
             this.tabStatus.PerformLayout();
+            this.tabInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -252,5 +263,6 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label lblHP;
         private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.Label label1;
     }
 }

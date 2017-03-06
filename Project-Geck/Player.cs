@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.XPath;
 using System.IO;
 
 namespace Geck
@@ -41,6 +37,9 @@ namespace Geck
         int Survival = 0;
         int Unarmed = 0;
 
+        //add a notes section at each check screen to show perk modifiers
+        //add start combat end combat buttons
+
         List<Perk> perklist = new List<Perk>(new Perk[] {
             new Perk("error","error"),
             new Perk("Lady Killer","In combat you do increased damage on people of the opposite sex. You also have an easier time convincing them during speech checks."), //Must be male
@@ -49,11 +48,11 @@ namespace Geck
             new Perk("Confirmed Bachelor","In combat you do increased damage on people of the same sex. You also have an easier time convincing them during speech checks."), //Must be male
             new Perk("Friend of the Night","Increased accuracy at night with all ranged weapons."),
             new Perk("Theif", 5,5, "Sneak", "Lockpick" ,"You gain plus 5 to both Sneak and Lockpick."),
-            new Perk("Hunter","In combat you do 25% more damage against animals and mutated animals."),
-            new Perk("Intensive Training", 1, "SpecialPoints", "You can put a single point into any of your special attributes."),
-            new Perk("Rapid Reload","All of your weapons reloads require one less AP point."), //Code this
+            new Perk("Hunter","In combat you do 25% more damage against animals and mutated animals."), //add note
+            new Perk("Intense Training", 1, "SpecialPoints", "You can put a single point into any of your special attributes."), //code
+            new Perk("Rapid Reload","All of your weapons reloads require one less AP point."), 
             new Perk("Retention","Skill magazines now last longer."), //idk
-            new Perk("Swift Learner","You gain an additional 10% XP whenever XP is earned."), //maybe code idk
+            new Perk("Swift Learner","You gain an additional 10% XP whenever XP is earned."), //add a note at xp gained
             new Perk("Gun Nut", 5, 5, "Guns", "Repair", "You gain plus 5 to Guns and Repair."),
             new Perk("Cannibal","The player can eat the corpses of members of their same race in order to regain maxHP, at the cost of Karma."), //ask how much karma
             new Perk("Child At Heart","You have an easier time connecting with and convincing children."),
@@ -146,11 +145,11 @@ namespace Geck
 
         List<Perk> Traits = new List<Perk>();
 
-        private String name = String.Empty;
-        String gender = String.Empty;
-        String race = String.Empty;
+        public String Name = String.Empty;
+        public String Gender = String.Empty;
+        public String Race = String.Empty;
         String CurrencyName = String.Empty;
-        int karma = 0;
+        int Karma = 0;
         int Currency = 0;
         int Level = 1;
         int Experience = 0;
@@ -166,6 +165,7 @@ namespace Geck
         int Skill_Points_On_Level = 0;
         int Limb_Damage_Percent = 100;
         bool Addicted = false;
+        int reload_ap; 
 
         public bool BarterTagged = false;
         public bool EWTagged = false;
@@ -180,13 +180,12 @@ namespace Geck
         public bool SpeechTagged = false;
         public bool SurvivalTagged = false;
         public bool UnarmedTagged = false;
+        public bool created = false;
 
         public Player()
         {
 
         }
-
-        
 
         public void SetAttribute(String id, int val)
         {
@@ -392,30 +391,6 @@ namespace Geck
 
         }
 
-        public String Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public String Race
-        {
-            get { return race; }
-            set { race = value; }
-        }
-
-        public String Gender
-        {
-            get { return gender; }
-            set { gender = value; }
-        }
-
-        public int Karma
-        {
-            get { return karma; }
-            set { karma = value; }
-        }
-
         public List<String> GetSkillReport()
         {
             List<String> report = new List<String>();
@@ -482,6 +457,17 @@ namespace Geck
                     }
                     //Code the rest here laddie (make sure to mark as applied)
 
+                    if (i.GetName().Equals("Rapid Reload"))
+                        reload_ap -= 1;
+
+                    if (i.GetName().Equals("Intense Training"))
+                    {
+                        frmSpecial frmSpec = new frmSpecial(this);
+                        frmSpec.Show();
+
+                    }
+
+
                 }
 
             }
@@ -537,13 +523,14 @@ namespace Geck
                 IndentChar = '\t'
             };
 
+            //Start Doc
             objWriter.WriteStartDocument();
 
             objWriter.WriteStartElement("Player");
 
             //Write Player Info
-            objWriter.WriteElementString("name", name);
-            objWriter.WriteElementString("Gender", gender);
+            objWriter.WriteElementString("name", Name);
+            objWriter.WriteElementString("Gender", Gender);
             objWriter.WriteElementString("Race", Race);
             objWriter.WriteElementString("Karma", Karma.ToString());
             objWriter.WriteElementString("CurrencyType", CurrencyName);
@@ -574,6 +561,9 @@ namespace Geck
             objWriter.WriteElementString("Survival", Survival.ToString());
             objWriter.WriteElementString("Unarmed", Unarmed.ToString());
 
+            //Write Other
+            objWriter.WriteElementString("Created", created.ToString());
+            objWriter.WriteElementString("SpecialPoints", SpecialPoints.ToString());
 
             objWriter.WriteStartElement("Perks");
 
@@ -596,43 +586,45 @@ namespace Geck
         {
             int counter = 0;
 
-            //Uses the chummergen dev's XmlExtensions class. It makes life so much easier.
-
             XmlDocument objXmlDocument = new XmlDocument();
             objXmlDocument.Load(FileName);
             XmlNode objXmlCharacter = objXmlDocument.SelectSingleNode("/Player");
             
             //Load Player Info
-            objXmlCharacter.TryGetStringFieldQuickly("name", ref name);
-            objXmlCharacter.TryGetStringFieldQuickly("Gender", ref gender);
-            objXmlCharacter.TryGetStringFieldQuickly("Race", ref race);
-            objXmlCharacter.TryGetInt32FieldQuickly("Karma", ref karma);
-            objXmlCharacter.TryGetStringFieldQuickly("CurrencyType", ref CurrencyName);
-            objXmlCharacter.TryGetInt32FieldQuickly("Currency", ref Currency);
+            objXmlCharacter.ReadString("name", ref Name);
+            objXmlCharacter.ReadString("Gender", ref Gender);
+            objXmlCharacter.ReadString("Race", ref Race);
+            objXmlCharacter.ReadInt("Karma", ref Karma);
+            objXmlCharacter.ReadString("CurrencyType", ref CurrencyName);
+            objXmlCharacter.ReadInt("Currency", ref Currency);
 
             //Load Special
-            objXmlCharacter.TryGetInt32FieldQuickly("Str", ref Str);
-            objXmlCharacter.TryGetInt32FieldQuickly("Per", ref Per);
-            objXmlCharacter.TryGetInt32FieldQuickly("End", ref End);
-            objXmlCharacter.TryGetInt32FieldQuickly("Cha", ref Cha);
-            objXmlCharacter.TryGetInt32FieldQuickly("Int", ref Int);
-            objXmlCharacter.TryGetInt32FieldQuickly("Agi", ref Agi);
-            objXmlCharacter.TryGetInt32FieldQuickly("Luc", ref Luc);
+            objXmlCharacter.ReadInt("Str", ref Str);
+            objXmlCharacter.ReadInt("Per", ref Per);
+            objXmlCharacter.ReadInt("End", ref End);
+            objXmlCharacter.ReadInt("Cha", ref Cha);
+            objXmlCharacter.ReadInt("Int", ref Int);
+            objXmlCharacter.ReadInt("Agi", ref Agi);
+            objXmlCharacter.ReadInt("Luc", ref Luc);
 
             //Load Skills
-            objXmlCharacter.TryGetInt32FieldQuickly("Barter", ref Barter);
-            objXmlCharacter.TryGetInt32FieldQuickly("EnergyWeapons",ref Energy_Weapons);
-            objXmlCharacter.TryGetInt32FieldQuickly("Explosives", ref Explosives);
-            objXmlCharacter.TryGetInt32FieldQuickly("Guns", ref Guns);
-            objXmlCharacter.TryGetInt32FieldQuickly("Lockpick", ref Lockpick);
-            objXmlCharacter.TryGetInt32FieldQuickly("Medicine", ref Medicine);
-            objXmlCharacter.TryGetInt32FieldQuickly("MeleeWeapons", ref Melee_Weapons);
-            objXmlCharacter.TryGetInt32FieldQuickly("Repair", ref Repair);
-            objXmlCharacter.TryGetInt32FieldQuickly("Science", ref Science);
-            objXmlCharacter.TryGetInt32FieldQuickly("Sneak", ref Sneak);
-            objXmlCharacter.TryGetInt32FieldQuickly("Speech", ref Speech);
-            objXmlCharacter.TryGetInt32FieldQuickly("Survival", ref Survival);
-            objXmlCharacter.TryGetInt32FieldQuickly("Unarmed", ref Unarmed);
+            objXmlCharacter.ReadInt("Barter", ref Barter);
+            objXmlCharacter.ReadInt("EnergyWeapons",ref Energy_Weapons);
+            objXmlCharacter.ReadInt("Explosives", ref Explosives);
+            objXmlCharacter.ReadInt("Guns", ref Guns);
+            objXmlCharacter.ReadInt("Lockpick", ref Lockpick);
+            objXmlCharacter.ReadInt("Medicine", ref Medicine);
+            objXmlCharacter.ReadInt("MeleeWeapons", ref Melee_Weapons);
+            objXmlCharacter.ReadInt("Repair", ref Repair);
+            objXmlCharacter.ReadInt("Science", ref Science);
+            objXmlCharacter.ReadInt("Sneak", ref Sneak);
+            objXmlCharacter.ReadInt("Speech", ref Speech);
+            objXmlCharacter.ReadInt("Survival", ref Survival);
+            objXmlCharacter.ReadInt("Unarmed", ref Unarmed);
+
+            //Load Other
+            objXmlCharacter.ReadBool("Created", ref created);
+            objXmlCharacter.ReadInt("SpecialPoints", ref SpecialPoints);
 
             foreach (XmlElement i in objXmlCharacter.SelectSingleNode("Perks"))
             {
