@@ -43,7 +43,7 @@ namespace Geck
         //add a separate class or xml sheet for campaign config? Maybe build a customized client?
         //Add a box that asks if the user wants perks to try to be applied for them, and an option in menu to turn it on/off
         //allow users to redefine perks
-        //for now dont apply complicated ones, just add a note
+        //for now dont apply complicated ones, just add a note, "perks to consider"
         //Add a "custom rpg" menu or a "Cursedhydra's defaults" option to allow players to cutomize their experience, allow presets
         //add perk by id or name?
 
@@ -77,10 +77,10 @@ namespace Geck
             new Perk("Cowboy","You deal plus 25% damage when using dynamite, hatchets, knives, revolvers, and lever-action guns."), //Note
             new Perk("Living Anatomy","You deal plus 5% damage on all humans and non-feral ghouls."), //Note
             new Perk("Rad Resistance","You gain a 25% radiation resistance permanently."), //Code this
-            new Perk("Stonewall","You gain plus 5 DR/DT against all melee and unarmed attacks. In addition, you can not be knocked down in combat."), 
-            new Perk("Strong Back", 50, "Carry_Weight", "Strong Back: You can carry an additional 50 pounds of equipment."),
-            new Perk("Super Slam!"," Your chances increase to knock down an enemy when using all melee and unarmed weapons. 15% for Unarmed, 20% for One Handed Melee, and 25% for Two Handed Melee."),
-            new Perk("Terrifying Presence","You have a stronger chance of succeeding any sort of threatening speech check."),
+            new Perk("Stonewall","You gain plus 5 DR/DT against all melee and unarmed attacks. In addition, you can not be knocked down in combat."), //Note
+            new Perk("Strong Back", 50, "Carry_Weight", "Strong Back: You can carry an additional 50 pounds of equipment."), 
+            new Perk("Super Slam!"," Your chances increase to knock down an enemy when using all melee and unarmed weapons. 15% for Unarmed, 20% for One Handed Melee, and 25% for Two Handed Melee."), //Note
+            new Perk("Terrifying Presence","You have a stronger chance of succeeding any sort of threatening speech check."), //Note
             new Perk("Here and Now!", 1, "Level", "You instantly gain one level."),
             new Perk("Animal Friend","On the first rank of this perk, hostile animals will become friendly. The second rank animals will come to your aid in combat, as long as you are not fighting other animals."),
             new Perk("And Stay Back!","Any shotgun shot has a 10% chance to knock an enemy off his feet."),
@@ -159,7 +159,7 @@ namespace Geck
         int Currency = 0;
         int Level = 1;
         int Experience = 0;
-
+        int experienceToNextLevel;
         int AP = 5 + (int)(Math.Floor((double)(5 / 2)));
         int Carry_Weight = 0; //fill 
         int Crit_Chance = 0; //fill
@@ -521,6 +521,18 @@ namespace Geck
         {
             return playerperks;
         }
+
+        public void ExpGained(int expGained)
+        {
+            Experience += expGained;
+
+            if(Experience >= experienceToNextLevel)
+            {
+                Level++;
+                //show the level up form
+            }
+        }
+
 
         public void Save()
         {
