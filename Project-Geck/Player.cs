@@ -39,6 +39,13 @@ namespace Geck
 
         //add a notes section at each check screen to show perk modifiers
         //add start combat end combat buttons
+        //add "do you want tosave" if exited without saving
+        //add a separate class or xml sheet for campaign config? Maybe build a customized client?
+        //Add a box that asks if the user wants perks to try to be applied for them, and an option in menu to turn it on/off
+        //allow users to redefine perks
+        //for now dont apply complicated ones, just add a note
+        //Add a "custom rpg" menu or a "Cursedhydra's defaults" option to allow players to cutomize their experience, allow presets
+        //add perk by id or name?
 
         List<Perk> perklist = new List<Perk>(new Perk[] {
             new Perk("error","error"),
@@ -49,28 +56,28 @@ namespace Geck
             new Perk("Friend of the Night","Increased accuracy at night with all ranged weapons."),
             new Perk("Theif", 5,5, "Sneak", "Lockpick" ,"You gain plus 5 to both Sneak and Lockpick."),
             new Perk("Hunter","In combat you do 25% more damage against animals and mutated animals."), //add note
-            new Perk("Intense Training", 1, "SpecialPoints", "You can put a single point into any of your special attributes."), //code
-            new Perk("Rapid Reload","All of your weapons reloads require one less AP point."), 
-            new Perk("Retention","Skill magazines now last longer."), //idk
-            new Perk("Swift Learner","You gain an additional 10% XP whenever XP is earned."), //add a note at xp gained
-            new Perk("Gun Nut", 5, 5, "Guns", "Repair", "You gain plus 5 to Guns and Repair."),
-            new Perk("Cannibal","The player can eat the corpses of members of their same race in order to regain maxHP, at the cost of Karma."), //ask how much karma
-            new Perk("Child At Heart","You have an easier time connecting with and convincing children."),
+            new Perk("Intense Training", 1, "SpecialPoints", "You can put a single point into any of your special attributes."), 
+            new Perk("Rapid Reload","All of your weapons reloads require one less AP point."), //Add note
+            new Perk("Retention","Skill magazines now last longer."), //Add note??
+            new Perk("Swift Learner","You gain an additional 10% XP whenever XP is earned."), //add a note at xp gained (also code it maybe?)
+            new Perk("Gun Nut", 5, 5, "Guns", "Repair", "You gain plus 5 to Guns and Repair."), 
+            new Perk("Cannibal","The player can eat the corpses of members of their same race in order to regain maxHP, at the cost of Karma."), //Let the gm decide 
+            new Perk("Child At Heart","You have an easier time connecting with and convincing children."), 
             new Perk("Educated", "You gain +1 skill points every time you other time you advance in level."), //Make sure you code for this shit
-            new Perk("Entomologist","You do an additional 25% damage every time you attack a mutated insect."),
-            new Perk("Scoundrel","You gain plus 5 to both Speech and Barter, at the cost of Karma."), //Ask how much karma
-            new Perk("Travel Light","While wearing Light Armor, or no armor, you get an extra point of AP."), //Code this
-            new Perk("Bloody Mess","You gain plus 5 to damage overall. In addition, those killed by the player will die horribly at the cost of Karma."), //Ughhhhhh
-            new Perk("Demolitions Expert","You gain plus 20% damage with explosives."), //Code this
-            new Perk("Lead Belly","You take 50% less radiation from drinking unpurified water."),
-            new Perk("Toughness","Permanent 10% increase to Damage Resistance."), //Code this
+            new Perk("Entomologist","You do an additional 25% damage every time you attack a mutated insect."), //Note
+            new Perk("Scoundrel","You gain plus 5 to both Speech and Barter, at the cost of Karma."), //Show a box to decide how much karma (if applying perks is on)
+            new Perk("Travel Light","While wearing Light Armor, or no armor, you get an extra point of AP."), //Note
+            new Perk("Bloody Mess","You gain plus 5 to damage overall. In addition, those killed by the player will die horribly at the cost of Karma."), //This is kinda arbitrary... probably just add a note
+            new Perk("Demolitions Expert","You gain plus 20% damage with explosives."), //Note
+            new Perk("Lead Belly","You take 50% less radiation from drinking unpurified water."), //Note
+            new Perk("Toughness","Permanent 10% increase to Damage Resistance."), //Code this?
             new Perk("The Professional","All Sneak Attack Criticals with revolvers, pistols, and submachine guns inflict an additional 20% damage."), //Code this (Sneak crit% variable?)
-            new Perk("Shotgun Surgeon","When using shotguns, regardless of ammunition used, you ignore an additional 10 points of the target’s Damage Resistance."),
-            new Perk("Commando","You gain plus 25% accuracy when using two handed weapons."),
-            new Perk("Cowboy","You deal plus 25% damage when using dynamite, hatchets, knives, revolvers, and lever-action guns."),
-            new Perk("Living Anatomy","You deal plus 5% damage on all humans and non-feral ghouls."),
+            new Perk("Shotgun Surgeon","When using shotguns, regardless of ammunition used, you ignore an additional 10 points of the target’s Damage Resistance."), //Note
+            new Perk("Commando","You gain plus 25% accuracy when using two handed weapons."), //Note
+            new Perk("Cowboy","You deal plus 25% damage when using dynamite, hatchets, knives, revolvers, and lever-action guns."), //Note
+            new Perk("Living Anatomy","You deal plus 5% damage on all humans and non-feral ghouls."), //Note
             new Perk("Rad Resistance","You gain a 25% radiation resistance permanently."), //Code this
-            new Perk("Stonewall","You gain plus 5 DR/DT against all melee and unarmed attacks. In addition, you can not be knocked down in combat."),
+            new Perk("Stonewall","You gain plus 5 DR/DT against all melee and unarmed attacks. In addition, you can not be knocked down in combat."), 
             new Perk("Strong Back", 50, "Carry_Weight", "Strong Back: You can carry an additional 50 pounds of equipment."),
             new Perk("Super Slam!"," Your chances increase to knock down an enemy when using all melee and unarmed weapons. 15% for Unarmed, 20% for One Handed Melee, and 25% for Two Handed Melee."),
             new Perk("Terrifying Presence","You have a stronger chance of succeeding any sort of threatening speech check."),
@@ -80,7 +87,7 @@ namespace Geck
             new Perk("Finesse", 5 , "Crit_Chance", "You gain plus 5% crit chance."),
             new Perk("Math Wrath","You reduce all AP cost by 20%."), //code this
             new Perk("Mister Sandman","You can instantly kill a sleeping character without any checks. You also gain bonus XP."),
-            new Perk("Mysterious Stranger"," Every few combat sessions the DM will roll dice. If the majority of the dice land on 5 or 6, the Mysterious Stranger will kill an enemy combatant of the player’s choosing."),
+            new Perk("Mysterious Stranger"," Every few combat sessions the DM will roll dice. If the majority of the dice land on 5 or 6, the Mysterious Stranger will kill an enemy combatant of the player's choosing."),
             new Perk("Nerd Rage!","Your DR is increased by 15 and your Strength is increased to 10 when your health is 20% or lower."),
             new Perk("Night Person","Your INT and PER is increased by 2 between 6pm and 6am."),
             new Perk("Plasma Spaz","The AP cost for using plasma weapons is reduced by 20%."),
@@ -122,6 +129,8 @@ namespace Geck
             new Perk("Party Boy", "Immune to alcohol addiction."),
             new Perk("Party Girl","Immune to alcohol addiction."),
             new Perk("Balance","All SPECIAL stats are increased by 1"), //codeeeeeee
+
+            //These are my arbitrary racial perks 
             new Perk("Ghoulified","Healed by light rads, and immune to the effects of radiation up to 600 Rads."),
             new Perk("One of Us","Increased Speech, Charisma, and Barter among ghouls. Feral ghouls are non-hostile."),
             new Perk("\"Zombie!\"", "Decreased Speech, Charisma, and Barter among humans."),
@@ -132,11 +141,8 @@ namespace Geck
             new Perk("Brutish", -15, -15 ,"Speech", "Barter", "Lose 15 points in Speech and Barter"),
             new Perk("Schizophrenia","Due to an excess use of Stealth Boys, you have developed schizophrenia. In addition to auditory hallucinations, your Speech and Barter are capped at 50, and your CHA is capped at 5."),
             new Perk("Super Soldier","Your Sneak and Guns start at 30."), 
-            new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"),
-            new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"),
-            new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"),
-            new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"),
-            new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"), new Perk("a","a"),
+
+            
             });
 
 
@@ -155,7 +161,7 @@ namespace Geck
         int Experience = 0;
 
         int AP = 5 + (int)(Math.Floor((double)(5 / 2)));
-        int Carry_Weight = 0; //fill ask dam
+        int Carry_Weight = 0; //fill 
         int Crit_Chance = 0; //fill
         int Crit_Damage_Percent = 100;
         int DR = 0; //fill
@@ -165,7 +171,6 @@ namespace Geck
         int Skill_Points_On_Level = 0;
         int Limb_Damage_Percent = 100;
         bool Addicted = false;
-        int reload_ap; 
 
         public bool BarterTagged = false;
         public bool EWTagged = false;
@@ -411,6 +416,7 @@ namespace Geck
             return report;
         }
 
+        //Not sure why this has its own method... I should probably change it eventually
         public void SetSpecialPoints(int val)
         {
             SpecialPoints = val;
@@ -457,13 +463,16 @@ namespace Geck
                     }
                     //Code the rest here laddie (make sure to mark as applied)
 
-                    if (i.GetName().Equals("Rapid Reload"))
-                        reload_ap -= 1;
-
                     if (i.GetName().Equals("Intense Training"))
                     {
                         frmSpecial frmSpec = new frmSpecial(this);
                         frmSpec.Show();
+                    }
+
+                    //if (i.GetName().Equals("Rapid Reload"))
+
+                    if(i.GetHashCode().Equals("Toughness"))
+                    {
 
                     }
 
