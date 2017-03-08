@@ -44,5 +44,10 @@ namespace Geck
         {
 
         }
+
+        private void tabGeneral_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

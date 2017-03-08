@@ -39,13 +39,16 @@ namespace Geck
 
         //add a notes section at each check screen to show perk modifiers
         //add start combat end combat buttons
-        //add "do you want tosave" if exited without saving
+        //add "do you want to save" if exited without saving
         //add a separate class or xml sheet for campaign config? Maybe build a customized client?
         //Add a box that asks if the user wants perks to try to be applied for them, and an option in menu to turn it on/off
         //allow users to redefine perks
         //for now dont apply complicated ones, just add a note
         //Add a "custom rpg" menu or a "Cursedhydra's defaults" option to allow players to cutomize their experience, allow presets
         //add perk by id or name?
+        //perk screen where you can select the perk type (combat, 
+        //add tabs for managing multiple characters at once
+        //some sort of maps function in data? google maps???? movable cursor?
 
         List<Perk> perklist = new List<Perk>(new Perk[] {
             new Perk("error","error"),
@@ -71,22 +74,22 @@ namespace Geck
             new Perk("Demolitions Expert","You gain plus 20% damage with explosives."), //Note
             new Perk("Lead Belly","You take 50% less radiation from drinking unpurified water."), //Note
             new Perk("Toughness","Permanent 10% increase to Damage Resistance."), //Code this?
-            new Perk("The Professional","All Sneak Attack Criticals with revolvers, pistols, and submachine guns inflict an additional 20% damage."), //Code this (Sneak crit% variable?)
+            new Perk("The Professional","All Sneak Attack Criticals with revolvers, pistols, and submachine guns inflict an additional 20% damage."), //Note
             new Perk("Shotgun Surgeon","When using shotguns, regardless of ammunition used, you ignore an additional 10 points of the target’s Damage Resistance."), //Note
             new Perk("Commando","You gain plus 25% accuracy when using two handed weapons."), //Note
             new Perk("Cowboy","You deal plus 25% damage when using dynamite, hatchets, knives, revolvers, and lever-action guns."), //Note
             new Perk("Living Anatomy","You deal plus 5% damage on all humans and non-feral ghouls."), //Note
-            new Perk("Rad Resistance","You gain a 25% radiation resistance permanently."), //Code this
-            new Perk("Stonewall","You gain plus 5 DR/DT against all melee and unarmed attacks. In addition, you can not be knocked down in combat."), 
-            new Perk("Strong Back", 50, "Carry_Weight", "Strong Back: You can carry an additional 50 pounds of equipment."),
-            new Perk("Super Slam!"," Your chances increase to knock down an enemy when using all melee and unarmed weapons. 15% for Unarmed, 20% for One Handed Melee, and 25% for Two Handed Melee."),
-            new Perk("Terrifying Presence","You have a stronger chance of succeeding any sort of threatening speech check."),
-            new Perk("Here and Now!", 1, "Level", "You instantly gain one level."),
-            new Perk("Animal Friend","On the first rank of this perk, hostile animals will become friendly. The second rank animals will come to your aid in combat, as long as you are not fighting other animals."),
-            new Perk("And Stay Back!","Any shotgun shot has a 10% chance to knock an enemy off his feet."),
-            new Perk("Finesse", 5 , "Crit_Chance", "You gain plus 5% crit chance."),
-            new Perk("Math Wrath","You reduce all AP cost by 20%."), //code this
-            new Perk("Mister Sandman","You can instantly kill a sleeping character without any checks. You also gain bonus XP."),
+            new Perk("Rad Resistance","You gain a 25% radiation resistance permanently."), //Note (rads screen)
+            new Perk("Stonewall","You gain plus 5 DR/DT against all melee and unarmed attacks. In addition, you can not be knocked down in combat."), //Note (combat screen) 
+            new Perk("Strong Back", 50, "Carry_Weight", "Strong Back: You can carry an additional 50 pounds of equipment."), 
+            new Perk("Super Slam!"," Your chances increase to knock down an enemy when using all melee and unarmed weapons. 15% for Unarmed, 20% for One Handed Melee, and 25% for Two Handed Melee."), //Note Combat Screen
+            new Perk("Terrifying Presence","You have a stronger chance of succeeding any sort of threatening speech check."), //Note speech screen
+            new Perk("Here and Now!", 1, "Level", "You instantly gain one level."), //Add a conditional that checks during perk application if level chenges to bring up the screen
+            new Perk("Animal Friend","On the first rank of this perk, hostile animals will become friendly. The second rank animals will come to your aid in combat, as long as you are not fighting other animals."), //Note general
+            new Perk("And Stay Back!","Any shotgun shot has a 10% chance to knock an enemy off his feet."), //Note combar
+            new Perk("Finesse", 5 , "Crit_Chance", "You gain plus 5% crit chance."), 
+            new Perk("Math Wrath","You reduce all AP cost by 20%."), //code this (combat/general screen)
+            new Perk("Mister Sandman","You can instantly kill a sleeping character without any checks. You also gain bonus XP."), //Note (general)
             new Perk("Mysterious Stranger"," Every few combat sessions the DM will roll dice. If the majority of the dice land on 5 or 6, the Mysterious Stranger will kill an enemy combatant of the player's choosing."),
             new Perk("Nerd Rage!","Your DR is increased by 15 and your Strength is increased to 10 when your health is 20% or lower."),
             new Perk("Night Person","Your INT and PER is increased by 2 between 6pm and 6am."),
@@ -144,7 +147,6 @@ namespace Geck
 
             
             });
-
 
         //The list of the player's taken perks
         List<Perk> playerperks = new List<Perk>();
@@ -398,21 +400,22 @@ namespace Geck
 
         public List<String> GetSkillReport()
         {
-            List<String> report = new List<String>();
-            report.Add(Barter.ToString());
-            report.Add(Energy_Weapons.ToString());
-            report.Add(Explosives.ToString());
-            report.Add(Guns.ToString());
-            report.Add(Lockpick.ToString());
-            report.Add(Medicine.ToString());
-            report.Add(Melee_Weapons.ToString());
-            report.Add(Repair.ToString());
-            report.Add(Science.ToString());
-            report.Add(Sneak.ToString());
-            report.Add(Speech.ToString());
-            report.Add(Survival.ToString());
-            report.Add(Unarmed.ToString());
-
+            List<String> report = new List<String>
+            {
+                Barter.ToString(),
+                Energy_Weapons.ToString(),
+                Explosives.ToString(),
+                Guns.ToString(),
+                Lockpick.ToString(),
+                Medicine.ToString(),
+                Melee_Weapons.ToString(),
+                Repair.ToString(),
+                Science.ToString(),
+                Sneak.ToString(),
+                Speech.ToString(),
+                Survival.ToString(),
+                Unarmed.ToString()
+            };
             return report;
         }
 
