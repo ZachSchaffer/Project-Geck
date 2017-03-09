@@ -16,12 +16,12 @@ namespace Geck
             InitializeComponent();
         }
 
-        private void fILEToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FILEToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void ToolStripButton1_Click(object sender, EventArgs e)
         {
 
         }
@@ -31,50 +31,51 @@ namespace Geck
 
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void TabPage1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void numStr_ValueChanged(object sender, EventArgs e)
+        private void NumStr_ValueChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private void Label7_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void Label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        private void HScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
 
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void TrackBar1_Scroll(object sender, EventArgs e)
         {
          
         }
 
-        private void tabPage2_Click(object sender, EventArgs e)
+        private void TabPage2_Click(object sender, EventArgs e)
         {
                
         }
 
-        private void loadCharacterToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoadCharacterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "G.E.C.K Files (*.geck)|*.geck|All Files (*.*)|*.*";
-
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Filter = "G.E.C.K Files (*.geck)|*.geck|All Files (*.*)|*.*"
+            };
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
                 LoadCharacter(openFileDialog.FileName);
 
-            frmCareer career = new frmCareer(player);
+            FrmCareer career = new FrmCareer(player);
 
         }
 
@@ -82,12 +83,14 @@ namespace Geck
         {
             if (File.Exists(fileName) && fileName.EndsWith("geck"))
             {
-                Player player = new Player();
-                player.FileName = fileName;
+                Player player = new Player()
+                {
+                    FileName = fileName
+                };
                 player.Load();
                 this.player = player;
 
-                frmCareer career = new frmCareer(player)
+                FrmCareer career = new FrmCareer(player)
                 {
                     MdiParent = this,
                     WindowState = FormWindowState.Maximized
@@ -97,7 +100,7 @@ namespace Geck
            
         }
 
-        private void newCharacterToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NewCharacterToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             frmRace frmRace = new frmRace();
@@ -120,7 +123,7 @@ namespace Geck
                         player.created = true;
                         player.AddPerk("Intense Training");
 
-                        frmCareer career = new frmCareer(player)
+                        FrmCareer career = new FrmCareer(player)
                         {
                             MdiParent = this,
                             WindowState = FormWindowState.Maximized
@@ -138,7 +141,7 @@ namespace Geck
             
         }
 
-        private void saveCharacterToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveCharacterToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             if(String.IsNullOrEmpty(player.Name))
@@ -148,9 +151,10 @@ namespace Geck
 
             else
             {
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "G.E.C.K Files (*.geck)|*.geck|All Files (*.*)|*.*";
-
+                SaveFileDialog saveFileDialog = new SaveFileDialog()
+                {
+                    Filter = "G.E.C.K Files (*.geck)|*.geck|All Files (*.*)|*.*"
+                };
                 string strShowFileName = string.Empty;
                 string[] strFile = player.FileName.Split(Path.DirectorySeparatorChar);
                 strShowFileName = strFile[strFile.Length - 1];
@@ -171,7 +175,7 @@ namespace Geck
                 
         }
 
-        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        private void SaveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
         }

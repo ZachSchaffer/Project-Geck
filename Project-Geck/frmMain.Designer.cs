@@ -61,7 +61,7 @@
             this.fILEToolStripMenuItem.Name = "fILEToolStripMenuItem";
             this.fILEToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fILEToolStripMenuItem.Text = "File";
-            this.fILEToolStripMenuItem.Click += new System.EventHandler(this.fILEToolStripMenuItem_Click);
+            this.fILEToolStripMenuItem.Click += new System.EventHandler(this.FILEToolStripMenuItem_Click);
             // 
             // newCharacterToolStripMenuItem
             // 
@@ -69,7 +69,7 @@
             this.newCharacterToolStripMenuItem.Name = "newCharacterToolStripMenuItem";
             this.newCharacterToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.newCharacterToolStripMenuItem.Text = "New Simple Character";
-            this.newCharacterToolStripMenuItem.Click += new System.EventHandler(this.newCharacterToolStripMenuItem_Click);
+            this.newCharacterToolStripMenuItem.Click += new System.EventHandler(this.NewCharacterToolStripMenuItem_Click);
             // 
             // loadCharacterToolStripMenuItem
             // 
@@ -77,7 +77,7 @@
             this.loadCharacterToolStripMenuItem.Name = "loadCharacterToolStripMenuItem";
             this.loadCharacterToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.loadCharacterToolStripMenuItem.Text = "Load Character";
-            this.loadCharacterToolStripMenuItem.Click += new System.EventHandler(this.loadCharacterToolStripMenuItem_Click);
+            this.loadCharacterToolStripMenuItem.Click += new System.EventHandler(this.LoadCharacterToolStripMenuItem_Click);
             // 
             // saveCharacterToolStripMenuItem
             // 
@@ -85,7 +85,7 @@
             this.saveCharacterToolStripMenuItem.Name = "saveCharacterToolStripMenuItem";
             this.saveCharacterToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.saveCharacterToolStripMenuItem.Text = "Save Character";
-            this.saveCharacterToolStripMenuItem.Click += new System.EventHandler(this.saveCharacterToolStripMenuItem_Click);
+            this.saveCharacterToolStripMenuItem.Click += new System.EventHandler(this.SaveCharacterToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -95,7 +95,7 @@
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.SaveFileDialog1_FileOk);
             // 
             // frmMain
             // 

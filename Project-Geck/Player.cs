@@ -49,6 +49,7 @@ namespace Geck
         //perk screen where you can select the perk type (combat, 
         //add tabs for managing multiple characters at once
         //some sort of maps function in data? google maps???? movable cursor?
+        //add what each preset changes
 
         List<Perk> perklist = new List<Perk>(new Perk[] {
             new Perk("error","error"),
@@ -79,7 +80,6 @@ namespace Geck
             new Perk("Commando","You gain plus 25% accuracy when using two handed weapons."), //Note
             new Perk("Cowboy","You deal plus 25% damage when using dynamite, hatchets, knives, revolvers, and lever-action guns."), //Note
             new Perk("Living Anatomy","You deal plus 5% damage on all humans and non-feral ghouls."), //Note
-<<<<<<< HEAD
             new Perk("Rad Resistance","You gain a 25% radiation resistance permanently."), //Note (rads screen)
             new Perk("Stonewall","You gain plus 5 DR/DT against all melee and unarmed attacks. In addition, you can not be knocked down in combat."), //Note (combat screen) 
             new Perk("Strong Back", 50, "Carry_Weight", "Strong Back: You can carry an additional 50 pounds of equipment."), 
@@ -91,19 +91,6 @@ namespace Geck
             new Perk("Finesse", 5 , "Crit_Chance", "You gain plus 5% crit chance."), 
             new Perk("Math Wrath","You reduce all AP cost by 20%."), //code this (combat/general screen)
             new Perk("Mister Sandman","You can instantly kill a sleeping character without any checks. You also gain bonus XP."), //Note (general)
-=======
-            new Perk("Rad Resistance","You gain a 25% radiation resistance permanently."), //Code this
-            new Perk("Stonewall","You gain plus 5 DR/DT against all melee and unarmed attacks. In addition, you can not be knocked down in combat."), //Note
-            new Perk("Strong Back", 50, "Carry_Weight", "Strong Back: You can carry an additional 50 pounds of equipment."), 
-            new Perk("Super Slam!"," Your chances increase to knock down an enemy when using all melee and unarmed weapons. 15% for Unarmed, 20% for One Handed Melee, and 25% for Two Handed Melee."), //Note
-            new Perk("Terrifying Presence","You have a stronger chance of succeeding any sort of threatening speech check."), //Note
-            new Perk("Here and Now!", 1, "Level", "You instantly gain one level."),
-            new Perk("Animal Friend","On the first rank of this perk, hostile animals will become friendly. The second rank animals will come to your aid in combat, as long as you are not fighting other animals."),
-            new Perk("And Stay Back!","Any shotgun shot has a 10% chance to knock an enemy off his feet."),
-            new Perk("Finesse", 5 , "Crit_Chance", "You gain plus 5% crit chance."),
-            new Perk("Math Wrath","You reduce all AP cost by 20%."), //code this
-            new Perk("Mister Sandman","You can instantly kill a sleeping character without any checks. You also gain bonus XP."),
->>>>>>> origin/master
             new Perk("Mysterious Stranger"," Every few combat sessions the DM will roll dice. If the majority of the dice land on 5 or 6, the Mysterious Stranger will kill an enemy combatant of the player's choosing."),
             new Perk("Nerd Rage!","Your DR is increased by 15 and your Strength is increased to 10 when your health is 20% or lower."),
             new Perk("Night Person","Your INT and PER is increased by 2 between 6pm and 6am."),
@@ -182,7 +169,7 @@ namespace Geck
         int Crit_Damage_Percent = 100;
         int DR = 0; //fill
         int maxHP = 10; //fill
-        int currentHP = 7;
+        int HP = 7;
         int Skill_Points = 0;
         int Skill_Points_On_Level = 0;
         int Limb_Damage_Percent = 100;
