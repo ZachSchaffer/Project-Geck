@@ -7,19 +7,23 @@ namespace Geck
     {
         public frmTest(Player player)
         {
+            
             InitializeComponent();
-
-            foreach (String i in player.GetSkillReport())
-                richTextBox1.Text += "\n"+i;
-
-            foreach (Perk i in player.GetAllPerks())
-                richTextBox1.Text += "\n" + i.GetName();
-
+            numericUpDown1.Value = 1;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown num = sender as NumericUpDown;
+            if (Convert.ToInt32(num.Text) > num.Value)
+                MessageBox.Show("Value decreased");
+            else
+                MessageBox.Show("Value increased");
         }
     }
 }

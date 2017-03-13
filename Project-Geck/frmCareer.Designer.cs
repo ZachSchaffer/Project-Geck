@@ -34,7 +34,11 @@
             this.tabCommon = new System.Windows.Forms.TabPage();
             this.tabControlStats = new System.Windows.Forms.TabControl();
             this.tabStatus = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lblSurvival = new System.Windows.Forms.Label();
             this.lblUnarmed = new System.Windows.Forms.Label();
@@ -63,7 +67,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.label16 = new System.Windows.Forms.Label();
             this.lblLuc = new System.Windows.Forms.Label();
             this.lblAgi = new System.Windows.Forms.Label();
@@ -101,6 +104,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabInfo = new System.Windows.Forms.TabControl();
             this.tabOtherInfo = new System.Windows.Forms.TabPage();
+            this.label25 = new System.Windows.Forms.Label();
+            this.lblLevel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -110,8 +115,6 @@
             this.tabControlStats.SuspendLayout();
             this.tabStatus.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.SuspendLayout();
             this.tabPage.SuspendLayout();
             this.tabControlItems.SuspendLayout();
             this.tabInfo.SuspendLayout();
@@ -187,6 +190,8 @@
             // tabStatus
             // 
             this.tabStatus.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.tabStatus.Controls.Add(this.lblLevel);
+            this.tabStatus.Controls.Add(this.label25);
             this.tabStatus.Controls.Add(this.groupBox1);
             this.tabStatus.Controls.Add(this.lblSurvival);
             this.tabStatus.Controls.Add(this.lblUnarmed);
@@ -215,7 +220,6 @@
             this.tabStatus.Controls.Add(this.label12);
             this.tabStatus.Controls.Add(this.label11);
             this.tabStatus.Controls.Add(this.label10);
-            this.tabStatus.Controls.Add(this.splitContainer2);
             this.tabStatus.Controls.Add(this.label16);
             this.tabStatus.Controls.Add(this.lblLuc);
             this.tabStatus.Controls.Add(this.lblAgi);
@@ -247,24 +251,65 @@
             this.tabStatus.Text = "Status";
             this.tabStatus.Click += new System.EventHandler(this.TabPage2_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(195, 115);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 54;
+            this.button5.Text = "Level Up(1)";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(6, 406);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(292, 164);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(195, 34);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 27;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(10, 73);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 26;
+            this.button3.Text = "Modify AP";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(10, 34);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 25;
+            this.button2.Text = "Modify HP";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 29);
+            this.button1.Location = new System.Drawing.Point(10, 115);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 24;
-            this.button1.Text = "Add XP";
+            this.button1.Text = "Modify XP";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblSurvival
             // 
@@ -510,14 +555,6 @@
             this.label10.TabIndex = 27;
             this.label10.Text = "Barter";
             // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Location = new System.Drawing.Point(559, 406);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Size = new System.Drawing.Size(292, 164);
-            this.splitContainer2.SplitterDistance = 138;
-            this.splitContainer2.TabIndex = 26;
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -530,7 +567,7 @@
             // lblLuc
             // 
             this.lblLuc.AutoSize = true;
-            this.lblLuc.Location = new System.Drawing.Point(50, 351);
+            this.lblLuc.Location = new System.Drawing.Point(50, 381);
             this.lblLuc.Name = "lblLuc";
             this.lblLuc.Size = new System.Drawing.Size(41, 13);
             this.lblLuc.TabIndex = 21;
@@ -539,7 +576,7 @@
             // lblAgi
             // 
             this.lblAgi.AutoSize = true;
-            this.lblAgi.Location = new System.Drawing.Point(50, 321);
+            this.lblAgi.Location = new System.Drawing.Point(50, 351);
             this.lblAgi.Name = "lblAgi";
             this.lblAgi.Size = new System.Drawing.Size(41, 13);
             this.lblAgi.TabIndex = 20;
@@ -548,7 +585,7 @@
             // lblInt
             // 
             this.lblInt.AutoSize = true;
-            this.lblInt.Location = new System.Drawing.Point(50, 291);
+            this.lblInt.Location = new System.Drawing.Point(50, 321);
             this.lblInt.Name = "lblInt";
             this.lblInt.Size = new System.Drawing.Size(41, 13);
             this.lblInt.TabIndex = 19;
@@ -557,7 +594,7 @@
             // lblCha
             // 
             this.lblCha.AutoSize = true;
-            this.lblCha.Location = new System.Drawing.Point(50, 261);
+            this.lblCha.Location = new System.Drawing.Point(50, 291);
             this.lblCha.Name = "lblCha";
             this.lblCha.Size = new System.Drawing.Size(41, 13);
             this.lblCha.TabIndex = 18;
@@ -566,7 +603,7 @@
             // lblEnd
             // 
             this.lblEnd.AutoSize = true;
-            this.lblEnd.Location = new System.Drawing.Point(50, 231);
+            this.lblEnd.Location = new System.Drawing.Point(50, 261);
             this.lblEnd.Name = "lblEnd";
             this.lblEnd.Size = new System.Drawing.Size(41, 13);
             this.lblEnd.TabIndex = 17;
@@ -575,7 +612,7 @@
             // lblPer
             // 
             this.lblPer.AutoSize = true;
-            this.lblPer.Location = new System.Drawing.Point(50, 201);
+            this.lblPer.Location = new System.Drawing.Point(50, 231);
             this.lblPer.Name = "lblPer";
             this.lblPer.Size = new System.Drawing.Size(41, 13);
             this.lblPer.TabIndex = 16;
@@ -584,7 +621,7 @@
             // lblStr
             // 
             this.lblStr.AutoSize = true;
-            this.lblStr.Location = new System.Drawing.Point(50, 171);
+            this.lblStr.Location = new System.Drawing.Point(50, 201);
             this.lblStr.Name = "lblStr";
             this.lblStr.Size = new System.Drawing.Size(41, 13);
             this.lblStr.TabIndex = 15;
@@ -593,7 +630,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 351);
+            this.label9.Location = new System.Drawing.Point(9, 381);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 14;
@@ -602,7 +639,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 201);
+            this.label8.Location = new System.Drawing.Point(9, 231);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 13;
@@ -611,7 +648,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 171);
+            this.label7.Location = new System.Drawing.Point(9, 201);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 13);
             this.label7.TabIndex = 12;
@@ -620,7 +657,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 261);
+            this.label6.Location = new System.Drawing.Point(9, 291);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 11;
@@ -629,7 +666,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 321);
+            this.label5.Location = new System.Drawing.Point(9, 351);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(28, 13);
             this.label5.TabIndex = 10;
@@ -638,7 +675,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 291);
+            this.label4.Location = new System.Drawing.Point(9, 321);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 9;
@@ -647,7 +684,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 231);
+            this.label3.Location = new System.Drawing.Point(9, 261);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 8;
@@ -667,7 +704,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 142);
+            this.label1.Location = new System.Drawing.Point(9, 172);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 6;
@@ -878,6 +915,24 @@
             this.tabOtherInfo.Tag = "Tab_OtherInfo";
             this.tabOtherInfo.Text = "Quick Stats";
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(9, 142);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(29, 13);
+            this.label25.TabIndex = 55;
+            this.label25.Text = "LVL:";
+            // 
+            // lblLevel
+            // 
+            this.lblLevel.AutoSize = true;
+            this.lblLevel.Location = new System.Drawing.Point(39, 142);
+            this.lblLevel.Name = "lblLevel";
+            this.lblLevel.Size = new System.Drawing.Size(32, 13);
+            this.lblLevel.TabIndex = 56;
+            this.lblLevel.Text = "_LVL";
+            // 
             // FrmCareer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -900,8 +955,6 @@
             this.tabStatus.ResumeLayout(false);
             this.tabStatus.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
             this.tabPage.ResumeLayout(false);
             this.tabControlItems.ResumeLayout(false);
             this.tabInfo.ResumeLayout(false);
@@ -953,7 +1006,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label lblSurvival;
         private System.Windows.Forms.Label lblUnarmed;
         private System.Windows.Forms.Label lblScience;
@@ -983,5 +1035,11 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label lblLevel;
+        private System.Windows.Forms.Label label25;
     }
 }

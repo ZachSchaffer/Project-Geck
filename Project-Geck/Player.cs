@@ -50,6 +50,7 @@ namespace Geck
         //add tabs for managing multiple characters at once
         //some sort of maps function in data? google maps???? movable cursor?
         //add what each preset changes
+        //add an option for non default xp scaling, add option for fallout 1 2 3 4 and nv
 
         List<Perk> perklist = new List<Perk>(new Perk[] {
             new Perk("error","error"),
@@ -160,20 +161,22 @@ namespace Geck
         String CurrencyName = String.Empty;
         int Karma = 0;
         int Currency = 0;
-        int Level = 1;
-        int Experience = 0;
-        int experienceToNextLevel;
-        int AP = 5 + (int)(Math.Floor((double)(5 / 2)));
+        int level = 1;
+        int AP;
+        int maxAP = 5 + (int)(Math.Floor((double)(5 / 2)));
         int Carry_Weight = 0; //fill 
         int Crit_Chance = 0; //fill
         int Crit_Damage_Percent = 100;
         int DR = 0; //fill
         int maxHP = 10; //fill
         int HP = 7;
+        public int XP = 0;
+        int xpToNextLevel;
         int Skill_Points = 0;
         int Skill_Points_On_Level = 0;
         int Limb_Damage_Percent = 100;
         bool Addicted = false;
+
 
         public bool BarterTagged = false;
         public bool EWTagged = false;
@@ -193,6 +196,12 @@ namespace Geck
         public Player()
         {
 
+        }
+
+        public int XPToNextLevel
+        {
+            get { return 25*(3*level+2)*(level-1); }
+            set { xpToNextLevel = value; }
         }
 
         public void SetAttribute(String id, int val)
@@ -269,6 +278,9 @@ namespace Geck
             if (id.Equals("Skill_points_on_level"))
                 Skill_Points_On_Level = val;
 
+            if (id.Equals("Skill_Points"))
+                Skill_Points = val;
+
             if (id.Equals("DR"))
                 DR = val;
 
@@ -276,7 +288,7 @@ namespace Geck
                 Carry_Weight = val;
 
             if (id.Equals("Level"))
-                Level = val;
+                level = val;
 
             if (id.Equals("Crit_Chance"))
                 Crit_Chance = val;
@@ -290,8 +302,8 @@ namespace Geck
             if (id.Equals("Crit_Damage"))
                 Crit_Damage_Percent = val;
 
-            if (id.Equals("Experience"))
-                Experience = val;
+            if (id.Equals("XP"))
+                XP = val;
 
 
         }
@@ -370,6 +382,9 @@ namespace Geck
             if (id.Equals("Skill_points_on_level"))
                 return Skill_Points_On_Level;
 
+            if (id.Equals("Skill_Points"))
+                return Skill_Points;
+
             if (id.Equals("DR"))
                 return DR;
 
@@ -377,7 +392,7 @@ namespace Geck
                 return Carry_Weight;
 
             if (id.Equals("Level"))
-                return Level;
+                return level;
 
             if (id.Equals("Crit_Chance"))
                 return Crit_Chance;
@@ -391,8 +406,8 @@ namespace Geck
             if (id.Equals("Crit_Damage"))
                 return Crit_Damage_Percent;
 
-            if (id.Equals("Experience"))
-                return Experience;
+            if (id.Equals("XP"))
+                return XP;
 
             else
                 return -1;
@@ -528,11 +543,11 @@ namespace Geck
 
         public void ExpGained(int expGained)
         {
-            Experience += expGained;
+            XP += expGained;
 
-            if(Experience >= experienceToNextLevel)
+            if(XP >= XPToNextLevel)
             {
-                Level++;
+                level++;
                 //show the level up form
             }
         }
@@ -589,6 +604,8 @@ namespace Geck
             //Write Other
             objWriter.WriteElementString("Created", created.ToString());
             objWriter.WriteElementString("SpecialPoints", SpecialPoints.ToString());
+            objWriter.WriteElementString("SkillPoints", Skill_Points.ToString());
+            objWriter.WriteElementString("SkillPointsOnLevel", Skill_Points_On_Level.ToString());
 
             objWriter.WriteStartElement("Perks");
 
@@ -650,6 +667,8 @@ namespace Geck
             //Load Other
             objXmlCharacter.ReadBool("Created", ref created);
             objXmlCharacter.ReadInt("SpecialPoints", ref SpecialPoints);
+            objXmlCharacter.ReadInt("SkillPoints", ref Skill_Points);
+            objXmlCharacter.ReadInt("SkillPointsOnLevel", ref Skill_Points_On_Level);
 
             foreach (XmlElement i in objXmlCharacter.SelectSingleNode("Perks"))
             {
@@ -663,7 +682,8 @@ namespace Geck
                 }
 
             }
-
+            
+            //Add options to be loaded
         
         }
 

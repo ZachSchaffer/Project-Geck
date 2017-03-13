@@ -63,11 +63,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsXmlTools.cs" />
+    <Compile Include="frmAddXP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddXP.Designer.cs">
+      <DependentUpon>frmAddXP.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCareer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCareer.Designer.cs">
       <DependentUpon>frmCareer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLevelUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLevelUp.Designer.cs">
+      <DependentUpon>frmLevelUp.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTag.cs">
       <SubType>Form</SubType>
@@ -103,8 +115,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAddXP.resx">
+      <DependentUpon>frmAddXP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCareer.resx">
       <DependentUpon>frmCareer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLevelUp.resx">
+      <DependentUpon>frmLevelUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTag.resx">
       <DependentUpon>frmTag.cs</DependentUpon>
