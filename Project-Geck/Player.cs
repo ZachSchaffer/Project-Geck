@@ -10,32 +10,11 @@ namespace Geck
     public class Player
     {
 
-        //Special/Skills/Perks
+        public Player()
+        {
 
-        public String FileName = String.Empty;
-        int SpecialPoints = 5;
+        }
 
-        int Str = 5;
-        int Per = 5;
-        int End = 5;
-        int Cha = 5;
-        int Int = 5;
-        int Agi = 5;
-        int Luc = 5;
-
-        int Barter = 0;
-        int Energy_Weapons = 0;
-        int Explosives = 0;
-        int Guns = 0;
-        int Lockpick = 0;
-        int Medicine = 0;
-        int Melee_Weapons = 0;
-        int Repair = 0;
-        int Science = 0;
-        int Sneak = 0;
-        int Speech = 0;
-        int Survival = 0;
-        int Unarmed = 0;
 
         //add a notes section at each check screen to show perk modifiers
         //add start combat end combat buttons
@@ -51,7 +30,10 @@ namespace Geck
         //some sort of maps function in data? google maps???? movable cursor?
         //add what each preset changes
         //add an option for non default xp scaling, add option for fallout 1 2 3 4 and nv
+        //algorithm format; example: (OnLevel);Str,+1;MaxXp,+1000; etc Show a list of all previously typed algorithms, save it in a separte file?
+        //You should probably change the perk list to an XML
 
+        #region Perk List
         List<Perk> perklist = new List<Perk>(new Perk[] {
             new Perk("error","error"),
             new Perk("Lady Killer","In combat you do increased damage on people of the opposite sex. You also have an easier time convincing them during speech checks."), //Must be male
@@ -149,268 +131,393 @@ namespace Geck
 
             
             });
+        #endregion
+
+        #region Attributes
+
+        public String FileName = String.Empty;
+
+        int _SpecialPoints = 5;
+        int _Str = 5;
+        int _Per = 5;
+        int _End = 5;
+        int _Cha = 5;
+        int _Int = 5;
+        int _Agi = 5;
+        int _Luc = 5;
+            
+        int _Barter = 0;
+        int _Energy_Weapons = 0;
+        int _Explosives = 0;
+        int _Guns = 0;
+        int _Lockpick = 0;
+        int _Medicine = 0;
+        int _Melee_Weapons = 0;
+        int _Repair = 0;
+        int _Science = 0;
+        int _Sneak = 0;
+        int _Speech = 0;
+        int _Survival = 0;
+        int _Unarmed = 0;
 
         //The list of the player's taken perks
         List<Perk> playerperks = new List<Perk>();
 
         List<Perk> Traits = new List<Perk>();
 
-        public String Name = String.Empty;
-        public String Gender = String.Empty;
-        public String Race = String.Empty;
-        String CurrencyName = String.Empty;
-        int Karma = 0;
-        int Currency = 0;
-        int level = 1;
-        int AP;
-        int maxAP = 5 + (int)(Math.Floor((double)(5 / 2)));
-        int Carry_Weight = 0; //fill 
-        int Crit_Chance = 0; //fill
-        int Crit_Damage_Percent = 100;
-        int DR = 0; //fill
-        int maxHP = 10; //fill
-        int HP = 7;
-        public int XP = 0;
-        int xpToNextLevel;
-        int Skill_Points = 0;
-        int Skill_Points_On_Level = 0;
-        int Limb_Damage_Percent = 100;
-        bool Addicted = false;
+        private String _Name = String.Empty;
+        private String _Gender = String.Empty;
+        private String _Race = String.Empty;
+        private String _CurrencyName = String.Empty;
+        private int _Karma = 0;
+        private int _Currency = 0;
+        private int _level = 1;
+        private int _AP;
+        private int _maxAP = 5 + (int)(Math.Floor((double)(5 / 2)));
+        private int _Carry_Weight = 0; //fill 
+        private int _Crit_Chance = 0; //fill
+        private int _Crit_Damage_Percent = 100;
+        private int _DR = 0; //fill
+        private int _maxHP = 10; //fill
+        private int _HP = 7;
+        private int _XP = 0;
+        private int _xpToNextLevel;
+        private int _Skill_Points = 0;
+        private int _Skill_Points_On_Level = 0;
+        private int _Limb_Damage_Percent = 100;
+        private bool _Addicted = false;
 
+        private bool _BarterTagged = false;
+        private bool _EWTagged = false;
+        private bool _ExplosivesTagged = false;
+        private bool _GunsTagged = false;
+        private bool _LockpickTagged = false;
+        private bool _MedicineTagged = false;
+        private bool _MWTagged = false;
+        private bool _RepairTagged = false;
+        private bool _ScienceTagged = false;
+        private bool _SneakTagged = false;
+        private bool _SpeechTagged = false;
+        private bool _SurvivalTagged = false;
+        private bool _UnarmedTagged = false;
+        private bool _Created = false;
 
-        public bool BarterTagged = false;
-        public bool EWTagged = false;
-        public bool ExplosivesTagged = false;
-        public bool GunsTagged = false;
-        public bool LockpickTagged = false;
-        public bool MedicineTagged = false;
-        public bool MWTagged = false;
-        public bool RepairTagged = false;
-        public bool ScienceTagged = false;
-        public bool SneakTagged = false;
-        public bool SpeechTagged = false;
-        public bool SurvivalTagged = false;
-        public bool UnarmedTagged = false;
-        public bool created = false;
+        public int Karma { get => Karma1; set => Karma1 = value; }
+        public int Currency { get => Currency1; set => Currency1 = value; }
+        public int Karma1 { get => _Karma; set => _Karma = value; }
+        public int Currency1 { get => _Currency; set => _Currency = value; }
+        public int Level { get => _level; set => _level = value; }
+        public int AP { get => _AP; set => _AP = value; }
+        public int MaxAP { get => _maxAP; set => _maxAP = value; }
+        public int Carry_Weight { get => _Carry_Weight; set => _Carry_Weight = value; }
+        public int Crit_Chance { get => _Crit_Chance; set => _Crit_Chance = value; }
+        public int Crit_Damage_Percent { get => _Crit_Damage_Percent; set => _Crit_Damage_Percent = value; }
+        public int DR { get => _DR; set => _DR = value; }
+        public int MaxHP { get => _maxHP; set => _maxHP = value; }
+        public int HP { get => _HP; set => _HP = value; }
+        public int XP { get => _XP; set => _XP = value; }
+        public int XpToNextLevel { get => _xpToNextLevel; set => _xpToNextLevel = value; }
+        public int Skill_Points { get => _Skill_Points; set => _Skill_Points = value; }
+        public int Skill_Points_On_Level { get => _Skill_Points_On_Level; set => _Skill_Points_On_Level = value; }
+        public int Limb_Damage_Percent { get => _Limb_Damage_Percent; set => _Limb_Damage_Percent = value; }
+        public bool Addicted { get => _Addicted; set => _Addicted = value; }
+        public bool BarterTagged { get => _BarterTagged; set => _BarterTagged = value; }
+        public bool EWTagged { get => _EWTagged; set => _EWTagged = value; }
+        public bool ExplosivesTagged { get => _ExplosivesTagged; set => _ExplosivesTagged = value; }
+        public bool GunsTagged { get => _GunsTagged; set => _GunsTagged = value; }
+        public bool LockpickTagged { get => _LockpickTagged; set => _LockpickTagged = value; }
+        public bool MedicineTagged { get => _MedicineTagged; set => _MedicineTagged = value; }
+        public bool MWTagged { get => _MWTagged; set => _MWTagged = value; }
+        public bool RepairTagged { get => _RepairTagged; set => _RepairTagged = value; }
+        public bool ScienceTagged { get => _ScienceTagged; set => _ScienceTagged = value; }
+        public bool SneakTagged { get => _SneakTagged; set => _SneakTagged = value; }
+        public bool SpeechTagged { get => _SpeechTagged; set => _SpeechTagged = value; }
+        public bool SurvivalTagged { get => _SurvivalTagged; set => _SurvivalTagged = value; }
+        public bool UnarmedTagged { get => _UnarmedTagged; set => _UnarmedTagged = value; }
+        public bool Created { get => _Created; set => _Created = value; }
+        public string Name { get => _Name; set => _Name = value; }
+        public string Gender { get => _Gender; set => _Gender = value; }
+        public string Race { get => _Race; set => _Race = value; }
+        public string CurrencyName { get => _CurrencyName; set => _CurrencyName = value; }
+        public int SpecialPoints { get => _SpecialPoints; set => _SpecialPoints = value; }
+        public int Str { get => _Str; set => _Str = value; }
+        public int Per { get => _Per; set => _Per = value; }
+        public int End { get => _End; set => _End = value; }
+        public int Cha { get => _Cha; set => _Cha = value; }
+        public int Int { get => _Int; set => _Int = value; }
+        public int Agi { get => _Agi; set => _Agi = value; }
+        public int Luc { get => _Luc; set => _Luc = value; }
+        public int Barter { get => _Barter; set => _Barter = value; }
+        public int Energy_Weapons { get => _Energy_Weapons; set => _Energy_Weapons = value; }
+        public int Explosives { get => _Explosives; set => _Explosives = value; }
+        public int Guns { get => _Guns; set => _Guns = value; }
+        public int Lockpick { get => _Lockpick; set => _Lockpick = value; }
+        public int Medicine { get => _Medicine; set => _Medicine = value; }
+        public int Melee_Weapons { get => _Melee_Weapons; set => _Melee_Weapons = value; }
+        public int Repair { get => _Repair; set => _Repair = value; }
+        public int Science { get => _Science; set => _Science = value; }
+        public int Sneak { get => _Sneak; set => _Sneak = value; }
+        public int Speech { get => _Speech; set => _Speech = value; }
+        public int Survival { get => _Survival; set => _Survival = value; }
+        public int Unarmed { get => _Unarmed; set => _Unarmed = value; }
 
-        public Player()
+        #endregion
+
+        #region Methods
+
+        public int GetAttribute(String id)
         {
+
+            switch (id)
+            {
+
+                case "Str":
+                return Str;
+
+                case "Per":
+                return Per;
+
+                case "End":
+                return End;
+
+                case "Cha":
+                return Cha;
+
+                case "Int":
+                return Int;
+
+                case "Agi":
+                return Agi;
+
+                case "Luc":
+                return Luc;
+
+                case "Barter":
+                return Barter;
+
+                case "EW":
+                return Energy_Weapons;
+
+                case "Explosives":
+                return Explosives;
+
+                case "Guns":
+                return Guns;
+
+                case "Lockpick":
+                return Lockpick;
+
+                case "Medicine":
+                return Medicine;
+
+                case "MW":
+                return Melee_Weapons;
+
+                case "Repair":
+                return Repair;
+
+                case "Science":
+                return Science;
+
+                case "Sneak":
+                return Sneak;
+
+                case "Speech":
+                return Speech;
+
+                case "Survival":
+                return Survival;
+
+                case "Unarmed":
+                return Unarmed;
+
+                case "Karma":
+                return Karma;
+
+                case "Limb_Damage":
+                return Limb_Damage_Percent;
+
+                case "SpecialPoints":
+                return SpecialPoints;
+
+                case "Skill_points_on_level":
+                return Skill_Points_On_Level;
+
+                case "Skill_Points":
+                return Skill_Points;
+
+                case "DR":
+                return DR;
+
+                case "Carry_Weight":
+                return Carry_Weight;
+
+                case "Level":
+                return Level;
+
+                case "Crit_Chance":
+                return Crit_Chance;
+
+                case "maxHP":
+                return MaxHP;
+
+                case "AP":
+                return AP;
+
+                case "Crit_Damage":
+                return Crit_Damage_Percent;
+
+                case "XP":
+                return XP;
+
+                default:
+                return -1;
 
         }
 
-        public int XPToNextLevel
-        {
-            get { return 25*(3*level+2)*(level-1); }
-            set { xpToNextLevel = value; }
         }
 
         public void SetAttribute(String id, int val)
         {
-            if (id.Equals("Str"))
+
+            switch (id)
+            {
+                case "Str":
                 Str = val;
+                    return;
 
-            if (id.Equals("Per"))
+                case "Per":
                 Per = val;
+                    return;
 
-            if (id.Equals("End"))
+                case "End":
                 End = val;
+                    return;
 
-            if (id.Equals("Cha"))
+                case "Cha":
                 Cha = val;
+                    return;
 
-            if (id.Equals("Int"))
+                case "Int":
                 Int = val;
+                    return;
 
-            if (id.Equals("Agi"))
+                case "Agi":
                 Agi = val;
+                    return;
 
-            if (id.Equals("Luc"))
+                case "Luc":
                 Luc = val;
+                    return;
 
-            if (id.Equals("Barter"))
+                case "Barter":
                 Barter = val;
+                    return;
 
-            if (id.Equals("EW"))
+                case "EW":
                 Energy_Weapons = val;
+                    return;
 
-            if (id.Equals("Explosives"))
+                case "Explosives":
                 Explosives = val;
+                    return;
 
-            if (id.Equals("Guns"))
+                case "Guns":
                 Guns = val;
+                    return;
 
-            if (id.Equals("Lockpick"))
+                case "Lockpick":
                 Lockpick = val;
+                    return;
 
-            if (id.Equals("Medicine"))
+                case "Medicine":
                 Medicine = val;
+                    return;
 
-            if (id.Equals("MW"))
+                case "MW":
                 Melee_Weapons = val;
+                    return;
 
-            if (id.Equals("Repair"))
+                case "Repair":
                 Repair = val;
+                    return;
 
-            if (id.Equals("Science"))
+                case "Science":
                 Science = val;
+                    return;
 
-            if (id.Equals("Sneak"))
+                case "Sneak":
                 Sneak = val;
+                    return;
 
-            if (id.Equals("Speech"))
+                case "Speech":
                 Speech = val;
+                    return;
 
-            if (id.Equals("Survival"))
+                case "Survival":
                 Survival = val;
+                    return;
 
-            if (id.Equals("Unarmed"))
+                case "Unarmed":
                 Unarmed = val;
+                    return;
 
-            if (id.Equals("Karma"))
+                case "Karma":
                 Karma = val;
+                    return;
 
-            if (id.Equals("Limb_Damage"))
+                case "Limb_Damage":
                 Limb_Damage_Percent = val;
+                    return;
 
-            if (id.Equals("SpecialPoints"))
+                case "SpecialPoints":
                 SpecialPoints = val;
+                    return;
 
-            if (id.Equals("Skill_points_on_level"))
+                case "Skill_points_on_level":
                 Skill_Points_On_Level = val;
+                    return;
 
-            if (id.Equals("Skill_Points"))
+                case "Skill_Points":
                 Skill_Points = val;
+                    return;
 
-            if (id.Equals("DR"))
+                case "DR":
                 DR = val;
+                    return;
 
-            if (id.Equals("Carry_Weight"))
+                case "Carry_Weight":
                 Carry_Weight = val;
+                    return;
 
-            if (id.Equals("Level"))
-                level = val;
+                case "Level":
+                Level = val;
+                    return;
 
-            if (id.Equals("Crit_Chance"))
+                case "Crit_Chance":
                 Crit_Chance = val;
+                    return;
 
-            if (id.Equals("maxHP"))
-                maxHP = val;
+                case "maxHP":
+                MaxHP = val;
+                    return;
 
-            if (id.Equals("AP"))
+                case "AP":
                 AP = val;
+                    return;
 
-            if (id.Equals("Crit_Damage"))
+
+                case "Crit_Damage":
                 Crit_Damage_Percent = val;
+                    return;
 
-            if (id.Equals("XP"))
+                case "XP":
                 XP = val;
+                    return;
 
+            }
+            
 
-        }
-
-        public int GetAttribute(String id)
-        {
-            if (id.Equals("Str"))
-                return Str;
-
-            if (id.Equals("Per"))
-                return Per;
-
-            if (id.Equals("End"))
-                return End;
-
-            if (id.Equals("Cha"))
-                return Cha;
-
-            if (id.Equals("Int"))
-                return Int;
-
-            if (id.Equals("Agi"))
-                return Agi;
-
-            if (id.Equals("Luc"))
-                return Luc;
-
-            if (id.Equals("Barter"))
-                return Barter;
-
-            if (id.Equals("EW"))
-                return Energy_Weapons;
-
-            if (id.Equals("Explosives"))
-                return Explosives;
-
-            if (id.Equals("Guns"))
-                return Guns;
-
-            if (id.Equals("Lockpick"))
-                return Lockpick;
-
-            if (id.Equals("Medicine"))
-                return Medicine;
-
-            if (id.Equals("MW"))
-                return Melee_Weapons;
-
-            if (id.Equals("Repair"))
-                return Repair;
-
-            if (id.Equals("Science"))
-                return Science;
-
-            if (id.Equals("Sneak"))
-                return Sneak;
-
-            if (id.Equals("Speech"))
-                return Speech;
-
-            if (id.Equals("Survival"))
-                return Survival;
-
-            if (id.Equals("Unarmed"))
-                return Unarmed;
-
-            if (id.Equals("Karma"))
-                return Karma;
-
-            if (id.Equals("Limb_Damage"))
-                return Limb_Damage_Percent;
-
-            if (id.Equals("SpecialPoints"))
-                return SpecialPoints;
-
-            if (id.Equals("Skill_points_on_level"))
-                return Skill_Points_On_Level;
-
-            if (id.Equals("Skill_Points"))
-                return Skill_Points;
-
-            if (id.Equals("DR"))
-                return DR;
-
-            if (id.Equals("Carry_Weight"))
-                return Carry_Weight;
-
-            if (id.Equals("Level"))
-                return level;
-
-            if (id.Equals("Crit_Chance"))
-                return Crit_Chance;
-
-            if (id.Equals("maxHP"))
-                return maxHP;
-
-            if (id.Equals("AP"))
-                return AP;
-
-            if (id.Equals("Crit_Damage"))
-                return Crit_Damage_Percent;
-
-            if (id.Equals("XP"))
-                return XP;
-
-            else
-                return -1;
 
         }
 
@@ -535,23 +642,10 @@ namespace Geck
             return null;
         }
 
-
         public List<Perk> GetAllPerks()
         {
             return playerperks;
         }
-
-        public void ExpGained(int expGained)
-        {
-            XP += expGained;
-
-            if(XP >= XPToNextLevel)
-            {
-                level++;
-                //show the level up form
-            }
-        }
-
 
         public void Save()
         {
@@ -602,7 +696,7 @@ namespace Geck
             objWriter.WriteElementString("Unarmed", Unarmed.ToString());
 
             //Write Other
-            objWriter.WriteElementString("Created", created.ToString());
+            objWriter.WriteElementString("Created", Created.ToString());
             objWriter.WriteElementString("SpecialPoints", SpecialPoints.ToString());
             objWriter.WriteElementString("SkillPoints", Skill_Points.ToString());
             objWriter.WriteElementString("SkillPointsOnLevel", Skill_Points_On_Level.ToString());
@@ -633,42 +727,42 @@ namespace Geck
             XmlNode objXmlCharacter = objXmlDocument.SelectSingleNode("/Player");
             
             //Load Player Info
-            objXmlCharacter.ReadString("name", ref Name);
-            objXmlCharacter.ReadString("Gender", ref Gender);
-            objXmlCharacter.ReadString("Race", ref Race);
-            objXmlCharacter.ReadInt("Karma", ref Karma);
-            objXmlCharacter.ReadString("CurrencyType", ref CurrencyName);
-            objXmlCharacter.ReadInt("Currency", ref Currency);
+            objXmlCharacter.ReadString("name", ref _Name);
+            objXmlCharacter.ReadString("Gender", ref _Gender);
+            objXmlCharacter.ReadString("Race", ref _Race);
+            objXmlCharacter.ReadInt("Karma", ref _Karma);
+            objXmlCharacter.ReadString("CurrencyType", ref _CurrencyName);
+            objXmlCharacter.ReadInt("Currency", ref _Currency);
 
             //Load Special
-            objXmlCharacter.ReadInt("Str", ref Str);
-            objXmlCharacter.ReadInt("Per", ref Per);
-            objXmlCharacter.ReadInt("End", ref End);
-            objXmlCharacter.ReadInt("Cha", ref Cha);
-            objXmlCharacter.ReadInt("Int", ref Int);
-            objXmlCharacter.ReadInt("Agi", ref Agi);
-            objXmlCharacter.ReadInt("Luc", ref Luc);
+            objXmlCharacter.ReadInt("Str", ref _Str);
+            objXmlCharacter.ReadInt("Per", ref _Per);
+            objXmlCharacter.ReadInt("End", ref _End);
+            objXmlCharacter.ReadInt("Cha", ref _Cha);
+            objXmlCharacter.ReadInt("Int", ref _Int);
+            objXmlCharacter.ReadInt("Agi", ref _Agi);
+            objXmlCharacter.ReadInt("Luc", ref _Luc);
 
             //Load Skills
-            objXmlCharacter.ReadInt("Barter", ref Barter);
-            objXmlCharacter.ReadInt("EnergyWeapons",ref Energy_Weapons);
-            objXmlCharacter.ReadInt("Explosives", ref Explosives);
-            objXmlCharacter.ReadInt("Guns", ref Guns);
-            objXmlCharacter.ReadInt("Lockpick", ref Lockpick);
-            objXmlCharacter.ReadInt("Medicine", ref Medicine);
-            objXmlCharacter.ReadInt("MeleeWeapons", ref Melee_Weapons);
-            objXmlCharacter.ReadInt("Repair", ref Repair);
-            objXmlCharacter.ReadInt("Science", ref Science);
-            objXmlCharacter.ReadInt("Sneak", ref Sneak);
-            objXmlCharacter.ReadInt("Speech", ref Speech);
-            objXmlCharacter.ReadInt("Survival", ref Survival);
-            objXmlCharacter.ReadInt("Unarmed", ref Unarmed);
+            objXmlCharacter.ReadInt("Barter", ref _Barter);
+            objXmlCharacter.ReadInt("EnergyWeapons",ref _Energy_Weapons);
+            objXmlCharacter.ReadInt("Explosives", ref _Explosives);
+            objXmlCharacter.ReadInt("Guns", ref _Guns);
+            objXmlCharacter.ReadInt("Lockpick", ref _Lockpick);
+            objXmlCharacter.ReadInt("Medicine", ref _Medicine);
+            objXmlCharacter.ReadInt("MeleeWeapons", ref _Melee_Weapons);
+            objXmlCharacter.ReadInt("Repair", ref _Repair);
+            objXmlCharacter.ReadInt("Science", ref _Science);
+            objXmlCharacter.ReadInt("Sneak", ref _Sneak);
+            objXmlCharacter.ReadInt("Speech", ref _Speech);
+            objXmlCharacter.ReadInt("Survival", ref _Survival);
+            objXmlCharacter.ReadInt("Unarmed", ref _Unarmed);
 
             //Load Other
-            objXmlCharacter.ReadBool("Created", ref created);
-            objXmlCharacter.ReadInt("SpecialPoints", ref SpecialPoints);
-            objXmlCharacter.ReadInt("SkillPoints", ref Skill_Points);
-            objXmlCharacter.ReadInt("SkillPointsOnLevel", ref Skill_Points_On_Level);
+            objXmlCharacter.ReadBool("Created", ref _Created);
+            objXmlCharacter.ReadInt("SpecialPoints", ref _SpecialPoints);
+            objXmlCharacter.ReadInt("SkillPoints", ref _Skill_Points);
+            objXmlCharacter.ReadInt("SkillPointsOnLevel", ref _Skill_Points_On_Level);
 
             foreach (XmlElement i in objXmlCharacter.SelectSingleNode("Perks"))
             {
@@ -686,6 +780,8 @@ namespace Geck
             //Add options to be loaded
         
         }
+
+        #endregion
 
     }
 

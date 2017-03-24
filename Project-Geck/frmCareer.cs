@@ -42,14 +42,13 @@ namespace Geck
 
         public void UpdateCharacter()
         {
-            lblHP.Text = (player.GetAttribute("HP").ToString() + " / " + player.GetAttribute("maxHP"));
+            lblHP.Text = (player.HP + " / " + player.MaxHP);
             //TODO: figure out how AP is gonna work
-            lblXP.Text = (player.GetAttribute("XP").ToString());
-            lblLevel.Text = (player.GetAttribute("Level").ToString());
+            lblXP.Text = (player.XP.ToString());
 
-            lblStr.Text = (player.GetAttribute("Str").ToString());
+            lblLevel.Text = (player.Level.ToString());
 
-
+            lblStr.Text = (player.Str.ToString());
 
         }
 
@@ -64,11 +63,10 @@ namespace Geck
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmAddXP AddXP = new frmAddXP(player);
-            AddXP.Show();
+            player.XP += Convert.ToInt32(textBoxXP.Text);
 
-            if (DialogResult == DialogResult.OK)
-                UpdateCharacter();
+            UpdateCharacter();
+
         }
     }
 }

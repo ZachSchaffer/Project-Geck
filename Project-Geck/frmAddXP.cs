@@ -26,13 +26,18 @@ namespace Geck
                 Close();
 
             int xpToAdd = Convert.ToInt32(textBox1.Text);
-            MessageBox.Show(xpToAdd.ToString());
-            player.XP = player.XP + xpToAdd;
-            DialogResult = DialogResult.OK;
+            player.XP += xpToAdd;
+            this.DialogResult = DialogResult.OK;
             Close();
    
             
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

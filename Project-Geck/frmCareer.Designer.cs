@@ -34,12 +34,18 @@
             this.tabCommon = new System.Windows.Forms.TabPage();
             this.tabControlStats = new System.Windows.Forms.TabControl();
             this.tabStatus = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.lblLevel = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxXP = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonXP = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.lblSurvival = new System.Windows.Forms.Label();
             this.lblUnarmed = new System.Windows.Forms.Label();
             this.lblScience = new System.Windows.Forms.Label();
@@ -104,8 +110,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabInfo = new System.Windows.Forms.TabControl();
             this.tabOtherInfo = new System.Windows.Forms.TabPage();
-            this.label25 = new System.Windows.Forms.Label();
-            this.lblLevel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -190,9 +194,12 @@
             // tabStatus
             // 
             this.tabStatus.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.tabStatus.Controls.Add(this.label26);
             this.tabStatus.Controls.Add(this.lblLevel);
+            this.tabStatus.Controls.Add(this.button4);
             this.tabStatus.Controls.Add(this.label25);
             this.tabStatus.Controls.Add(this.groupBox1);
+            this.tabStatus.Controls.Add(this.button5);
             this.tabStatus.Controls.Add(this.lblSurvival);
             this.tabStatus.Controls.Add(this.lblUnarmed);
             this.tabStatus.Controls.Add(this.lblScience);
@@ -251,65 +258,114 @@
             this.tabStatus.Text = "Status";
             this.tabStatus.Click += new System.EventHandler(this.TabPage2_Click);
             // 
-            // button5
+            // label26
             // 
-            this.button5.Location = new System.Drawing.Point(195, 115);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 54;
-            this.button5.Text = "Level Up(1)";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(409, 339);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(236, 13);
+            this.label26.TabIndex = 55;
+            this.label26.Text = "How about u just put boxes there with the button";
             // 
-            // groupBox1
+            // lblLevel
             // 
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(6, 406);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(292, 164);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
+            this.lblLevel.AutoSize = true;
+            this.lblLevel.Location = new System.Drawing.Point(39, 142);
+            this.lblLevel.Name = "lblLevel";
+            this.lblLevel.Size = new System.Drawing.Size(32, 13);
+            this.lblLevel.TabIndex = 56;
+            this.lblLevel.Text = "_LVL";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(195, 34);
+            this.button4.Location = new System.Drawing.Point(691, 435);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 27;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(9, 142);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(29, 13);
+            this.label25.TabIndex = 55;
+            this.label25.Text = "LVL:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBoxXP);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.buttonXP);
+            this.groupBox1.Location = new System.Drawing.Point(6, 406);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(292, 164);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            // 
+            // textBoxXP
+            // 
+            this.textBoxXP.Location = new System.Drawing.Point(59, 117);
+            this.textBoxXP.Name = "textBoxXP";
+            this.textBoxXP.Size = new System.Drawing.Size(100, 20);
+            this.textBoxXP.TabIndex = 29;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(59, 75);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 28;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(59, 36);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 27;
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(10, 73);
+            this.button3.Location = new System.Drawing.Point(165, 72);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 26;
-            this.button3.Text = "Modify AP";
+            this.button3.Text = "Add AP";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(10, 34);
+            this.button2.Location = new System.Drawing.Point(165, 33);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 25;
-            this.button2.Text = "Modify HP";
+            this.button2.Text = "Add HP";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonXP
             // 
-            this.button1.Location = new System.Drawing.Point(10, 115);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Modify XP";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonXP.Location = new System.Drawing.Point(165, 114);
+            this.buttonXP.Name = "buttonXP";
+            this.buttonXP.Size = new System.Drawing.Size(75, 23);
+            this.buttonXP.TabIndex = 24;
+            this.buttonXP.Text = "Add XP";
+            this.buttonXP.UseVisualStyleBackColor = true;
+            this.buttonXP.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(691, 488);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 54;
+            this.button5.Text = "Level Up(1)";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // lblSurvival
             // 
@@ -558,7 +614,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(370, 445);
+            this.label16.Location = new System.Drawing.Point(351, 201);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(163, 13);
             this.label16.TabIndex = 22;
@@ -915,24 +971,6 @@
             this.tabOtherInfo.Tag = "Tab_OtherInfo";
             this.tabOtherInfo.Text = "Quick Stats";
             // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(9, 142);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(29, 13);
-            this.label25.TabIndex = 55;
-            this.label25.Text = "LVL:";
-            // 
-            // lblLevel
-            // 
-            this.lblLevel.AutoSize = true;
-            this.lblLevel.Location = new System.Drawing.Point(39, 142);
-            this.lblLevel.Name = "lblLevel";
-            this.lblLevel.Size = new System.Drawing.Size(32, 13);
-            this.lblLevel.TabIndex = 56;
-            this.lblLevel.Text = "_LVL";
-            // 
             // FrmCareer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -955,6 +993,7 @@
             this.tabStatus.ResumeLayout(false);
             this.tabStatus.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage.ResumeLayout(false);
             this.tabControlItems.ResumeLayout(false);
             this.tabInfo.ResumeLayout(false);
@@ -1034,12 +1073,16 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonXP;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label lblLevel;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBoxXP;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

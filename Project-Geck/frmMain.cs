@@ -120,7 +120,7 @@ namespace Geck
                     if(Tag.DialogResult == DialogResult.OK)
                     {
                         this.player = player;
-                        player.created = true;
+                        player.Created = true;
                         player.AddPerk("Intense Training");
 
                         FrmCareer career = new FrmCareer(player)

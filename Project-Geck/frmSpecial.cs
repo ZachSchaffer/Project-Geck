@@ -21,7 +21,7 @@ namespace Geck
             lblLuc.Text = player.GetAttribute("Luc").ToString();
             lblSpecialPointsRemaining.Text = player1.GetSpecialPoints().ToString();
 
-            if (player.created)
+            if (player.Created)
             {
                 button2.Enabled = false;
                 button3.Enabled = false;
