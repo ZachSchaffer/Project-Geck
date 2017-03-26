@@ -32,6 +32,7 @@ namespace Geck
         //add an option for non default xp scaling, add option for fallout 1 2 3 4 and nv
         //algorithm format; example: (OnLevel);Str,+1;MaxXp,+1000; etc Show a list of all previously typed algorithms, save it in a separte file?
         //You should probably change the perk list to an XML
+        //Eventually make it so that the player can asd their own skils
 
         #region Perk List
         List<Perk> perklist = new List<Perk>(new Perk[] {
@@ -521,7 +522,7 @@ namespace Geck
 
         }
 
-        public List<String> GetSkillReport()
+        public List<String> GetPlayerReport() //TODO: Print all important player traits
         {
             List<String> report = new List<String>
             {
@@ -609,7 +610,7 @@ namespace Geck
         }
 
         /// <summary>
-        /// Adds a perk from the "perklist" array. "Id" corresponds to the array index + 1.
+        /// Adds a perk from the "perklist" array. You can get a list of ids at .
         /// </summary>
         /// <param name="id"></param>
         public void AddPerk(int id)
