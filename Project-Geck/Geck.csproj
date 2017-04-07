@@ -62,12 +62,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsOptions.cs" />
     <Compile Include="clsXmlTools.cs" />
-    <Compile Include="frmAddXP.cs">
+    <Compile Include="frmCharacterOptions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddXP.Designer.cs">
-      <DependentUpon>frmAddXP.cs</DependentUpon>
+    <Compile Include="frmCharacterOptions.Designer.cs">
+      <DependentUpon>frmCharacterOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCareer.cs">
       <SubType>Form</SubType>
@@ -115,11 +116,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmAddXP.resx">
-      <DependentUpon>frmAddXP.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Race.cs" />
     <EmbeddedResource Include="frmCareer.resx">
       <DependentUpon>frmCareer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCharacterOptions.resx">
+      <DependentUpon>frmCharacterOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLevelUp.resx">
       <DependentUpon>frmLevelUp.cs</DependentUpon>

@@ -15,7 +15,6 @@ namespace Geck
 
         }
 
-
         //add a notes section at each check screen to show perk modifiers
         //add start combat end combat buttons
         //add "do you want to save" if exited without saving
@@ -171,6 +170,10 @@ namespace Geck
         private String _Race = String.Empty;
         private String _CurrencyName = String.Empty;
         private int _Karma = 0;
+        private int _VeryEvilKarma = -750;
+        private int _EvilKarma = -250;
+        private int _GoodKarma = 250;
+        private int _VeryGoodKarma = 750;
         private int _Currency = 0;
         private int _level = 1;
         private int _AP;
@@ -180,7 +183,7 @@ namespace Geck
         private int _Crit_Damage_Percent = 100;
         private int _DR = 0; //fill
         private int _maxHP = 10; //fill
-        private int _HP = 7;
+        private int _HP = 10;
         private int _XP = 0;
         private int _xpToNextLevel;
         private int _Skill_Points = 0;
@@ -203,10 +206,12 @@ namespace Geck
         private bool _UnarmedTagged = false;
         private bool _Created = false;
 
-        public int Karma { get => Karma1; set => Karma1 = value; }
-        public int Currency { get => Currency1; set => Currency1 = value; }
-        public int Karma1 { get => _Karma; set => _Karma = value; }
-        public int Currency1 { get => _Currency; set => _Currency = value; }
+        public int Karma { get => _Karma; set => _Karma = value; }
+        public int VeryEvilKarma { get => _VeryEvilKarma; set => _VeryEvilKarma = value; }
+        public int EvilKarma { get => _EvilKarma; set => _EvilKarma = value; }
+        public int GoodKarma { get => _GoodKarma; set => _GoodKarma = value; }
+        public int VeryGoodKarma { get => _VeryGoodKarma; set => _VeryGoodKarma = value; }
+        public int Currency { get => _Currency; set => _Currency = value; }
         public int Level { get => _level; set => _level = value; }
         public int AP { get => _AP; set => _AP = value; }
         public int MaxAP { get => _maxAP; set => _maxAP = value; }
@@ -217,7 +222,7 @@ namespace Geck
         public int MaxHP { get => _maxHP; set => _maxHP = value; }
         public int HP { get => _HP; set => _HP = value; }
         public int XP { get => _XP; set => _XP = value; }
-        public int XpToNextLevel { get => _xpToNextLevel; set => _xpToNextLevel = value; }
+        public int XpToNextLevel { get => (1000*Level); set => _xpToNextLevel = value; } //set it to options.value eventually
         public int Skill_Points { get => _Skill_Points; set => _Skill_Points = value; }
         public int Skill_Points_On_Level { get => _Skill_Points_On_Level; set => _Skill_Points_On_Level = value; }
         public int Limb_Damage_Percent { get => _Limb_Damage_Percent; set => _Limb_Damage_Percent = value; }
@@ -262,10 +267,12 @@ namespace Geck
         public int Survival { get => _Survival; set => _Survival = value; }
         public int Unarmed { get => _Unarmed; set => _Unarmed = value; }
 
+
         #endregion
 
         #region Methods
 
+        //Old methods for getting and setting attributes, but it's useful for the perk setting algortihm so I left it here.
         public int GetAttribute(String id)
         {
 
@@ -544,10 +551,6 @@ namespace Geck
         }
 
         //Not sure why this has its own method... I should probably change it eventually
-        public void SetSpecialPoints(int val)
-        {
-            SpecialPoints = val;
-        }
 
         public int GetSpecialPoints()
         {

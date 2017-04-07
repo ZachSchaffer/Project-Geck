@@ -59,6 +59,8 @@
             this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -344,12 +346,30 @@
             this.numericUpDown13.TabIndex = 43;
             this.numericUpDown13.ValueChanged += new System.EventHandler(this.numericUpDown13_ValueChanged);
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(284, 54);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(204, 349);
+            this.checkedListBox1.TabIndex = 44;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(494, 48);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(184, 355);
+            this.listBox1.TabIndex = 45;
+            // 
             // frmLevelUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 454);
             this.ControlBox = false;
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.numericUpDown13);
             this.Controls.Add(this.numericUpDown12);
             this.Controls.Add(this.numericUpDown11);
@@ -435,5 +455,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown11;
         private System.Windows.Forms.NumericUpDown numericUpDown12;
         private System.Windows.Forms.NumericUpDown numericUpDown13;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

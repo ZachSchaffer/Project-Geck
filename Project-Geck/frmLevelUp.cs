@@ -315,20 +315,20 @@ namespace Geck
         {
             if (player.GetAttribute("Skill_Points") == 0)
             {
-                player.SetAttribute("Barter", (int)numericUpDown1.Value);
-                player.SetAttribute("EW", (int)numericUpDown2.Value);
-                player.SetAttribute("Explosives", (int)numericUpDown3.Value);
-                player.SetAttribute("Guns", (int)numericUpDown4.Value);
-                player.SetAttribute("Lockpick", (int)numericUpDown5.Value);
-                player.SetAttribute("Medicine", (int)numericUpDown6.Value);
-                player.SetAttribute("MW", (int)numericUpDown7.Value);
-                player.SetAttribute("Repair", (int)numericUpDown8.Value);
-                player.SetAttribute("Science", (int)numericUpDown9.Value);
-                player.SetAttribute("Sneak", (int)numericUpDown10.Value);
-                player.SetAttribute("Speech", (int)numericUpDown11.Value);
-                player.SetAttribute("Survival", (int)numericUpDown12.Value);
-                player.SetAttribute("Unarmed", (int)numericUpDown13.Value);
-
+                player.Barter = (int)numericUpDown1.Value;
+                player.Energy_Weapons = (int)numericUpDown2.Value;
+                player.Explosives = (int)numericUpDown3.Value;
+                player.Guns = (int)numericUpDown4.Value;
+                player.Lockpick = (int)numericUpDown5.Value;
+                player.Medicine = (int)numericUpDown6.Value;
+                player.Melee_Weapons = (int)numericUpDown7.Value;
+                player.Repair = (int)numericUpDown8.Value;
+                player.Science = (int)numericUpDown9.Value;
+                player.Sneak = (int)numericUpDown10.Value;
+                player.Speech = (int)numericUpDown11.Value;
+                player.Survival = (int)numericUpDown12.Value;
+                player.Unarmed = (int)numericUpDown13.Value;
+                player.Level++;
                 DialogResult = DialogResult.OK;
                 Close();
             }

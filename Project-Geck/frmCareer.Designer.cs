@@ -34,18 +34,25 @@
             this.tabCommon = new System.Windows.Forms.TabPage();
             this.tabControlStats = new System.Windows.Forms.TabControl();
             this.tabStatus = new System.Windows.Forms.TabPage();
-            this.label26 = new System.Windows.Forms.Label();
             this.lblLevel = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxXP = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.addXP = new System.Windows.Forms.NumericUpDown();
+            this.addAP = new System.Windows.Forms.NumericUpDown();
+            this.addHP = new System.Windows.Forms.NumericUpDown();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.buttonXP = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.buttonLevelUp = new System.Windows.Forms.Button();
             this.lblSurvival = new System.Windows.Forms.Label();
             this.lblUnarmed = new System.Windows.Forms.Label();
             this.lblScience = new System.Windows.Forms.Label();
@@ -73,7 +80,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.lblLuc = new System.Windows.Forms.Label();
             this.lblAgi = new System.Windows.Forms.Label();
             this.lblInt = new System.Windows.Forms.Label();
@@ -108,6 +114,7 @@
             this.tabMisc = new System.Windows.Forms.TabPage();
             this.tabAmmo = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label26 = new System.Windows.Forms.Label();
             this.tabInfo = new System.Windows.Forms.TabControl();
             this.tabOtherInfo = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
@@ -119,8 +126,12 @@
             this.tabControlStats.SuspendLayout();
             this.tabStatus.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addXP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addAP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addHP)).BeginInit();
             this.tabPage.SuspendLayout();
             this.tabControlItems.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,12 +205,11 @@
             // tabStatus
             // 
             this.tabStatus.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tabStatus.Controls.Add(this.label26);
             this.tabStatus.Controls.Add(this.lblLevel);
             this.tabStatus.Controls.Add(this.button4);
             this.tabStatus.Controls.Add(this.label25);
             this.tabStatus.Controls.Add(this.groupBox1);
-            this.tabStatus.Controls.Add(this.button5);
+            this.tabStatus.Controls.Add(this.buttonLevelUp);
             this.tabStatus.Controls.Add(this.lblSurvival);
             this.tabStatus.Controls.Add(this.lblUnarmed);
             this.tabStatus.Controls.Add(this.lblScience);
@@ -227,7 +237,6 @@
             this.tabStatus.Controls.Add(this.label12);
             this.tabStatus.Controls.Add(this.label11);
             this.tabStatus.Controls.Add(this.label10);
-            this.tabStatus.Controls.Add(this.label16);
             this.tabStatus.Controls.Add(this.lblLuc);
             this.tabStatus.Controls.Add(this.lblAgi);
             this.tabStatus.Controls.Add(this.lblInt);
@@ -256,16 +265,6 @@
             this.tabStatus.Size = new System.Drawing.Size(857, 576);
             this.tabStatus.TabIndex = 0;
             this.tabStatus.Text = "Status";
-            this.tabStatus.Click += new System.EventHandler(this.TabPage2_Click);
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(409, 339);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(236, 13);
-            this.label26.TabIndex = 55;
-            this.label26.Text = "How about u just put boxes there with the button";
             // 
             // lblLevel
             // 
@@ -296,76 +295,178 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBoxXP);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.button9);
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.addXP);
+            this.groupBox1.Controls.Add(this.addAP);
+            this.groupBox1.Controls.Add(this.addHP);
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.buttonXP);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.label29);
+            this.groupBox1.Controls.Add(this.label28);
+            this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Location = new System.Drawing.Point(6, 406);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(292, 164);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // textBoxXP
+            // button9
             // 
-            this.textBoxXP.Location = new System.Drawing.Point(59, 117);
-            this.textBoxXP.Name = "textBoxXP";
-            this.textBoxXP.Size = new System.Drawing.Size(100, 20);
-            this.textBoxXP.TabIndex = 29;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(59, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 28;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(59, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 27;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(165, 72);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 26;
-            this.button3.Text = "Add AP";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(165, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 25;
-            this.button2.Text = "Add HP";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // buttonXP
-            // 
-            this.buttonXP.Location = new System.Drawing.Point(165, 114);
-            this.buttonXP.Name = "buttonXP";
-            this.buttonXP.Size = new System.Drawing.Size(75, 23);
-            this.buttonXP.TabIndex = 24;
-            this.buttonXP.Text = "Add XP";
-            this.buttonXP.UseVisualStyleBackColor = true;
-            this.buttonXP.Click += new System.EventHandler(this.button1_Click);
+            this.button9.Location = new System.Drawing.Point(4, 30);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(55, 23);
+            this.button9.TabIndex = 43;
+            this.button9.Text = "1 HP";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(691, 488);
+            this.button5.Location = new System.Drawing.Point(231, 30);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 54;
-            this.button5.Text = "Level Up(1)";
+            this.button5.Size = new System.Drawing.Size(55, 23);
+            this.button5.TabIndex = 42;
+            this.button5.Text = "Max HP";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // addXP
+            // 
+            this.addXP.Location = new System.Drawing.Point(94, 138);
+            this.addXP.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.addXP.Name = "addXP";
+            this.addXP.Size = new System.Drawing.Size(100, 20);
+            this.addXP.TabIndex = 41;
+            // 
+            // addAP
+            // 
+            this.addAP.Location = new System.Drawing.Point(95, 85);
+            this.addAP.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.addAP.Name = "addAP";
+            this.addAP.Size = new System.Drawing.Size(100, 20);
+            this.addAP.TabIndex = 40;
+            // 
+            // addHP
+            // 
+            this.addHP.Location = new System.Drawing.Point(95, 33);
+            this.addHP.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.addHP.Name = "addHP";
+            this.addHP.Size = new System.Drawing.Size(100, 20);
+            this.addHP.TabIndex = 39;
+            // 
+            // button8
+            // 
+            this.button8.Image = global::Geck.Properties.Resources.delete;
+            this.button8.Location = new System.Drawing.Point(65, 134);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(24, 24);
+            this.button8.TabIndex = 38;
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Image = global::Geck.Properties.Resources.delete;
+            this.button7.Location = new System.Drawing.Point(65, 82);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(24, 24);
+            this.button7.TabIndex = 37;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.Image = global::Geck.Properties.Resources.delete;
+            this.button6.Location = new System.Drawing.Point(65, 29);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(24, 24);
+            this.button6.TabIndex = 36;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button3
+            // 
+            this.button3.Image = global::Geck.Properties.Resources.add;
+            this.button3.Location = new System.Drawing.Point(201, 134);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(24, 24);
+            this.button3.TabIndex = 35;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Image = global::Geck.Properties.Resources.add;
+            this.button2.Location = new System.Drawing.Point(201, 82);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(24, 24);
+            this.button2.TabIndex = 34;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Image = global::Geck.Properties.Resources.add;
+            this.button1.Location = new System.Drawing.Point(200, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 24);
+            this.button1.TabIndex = 33;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(135, 122);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(21, 13);
+            this.label29.TabIndex = 32;
+            this.label29.Text = "XP";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(135, 66);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(21, 13);
+            this.label28.TabIndex = 31;
+            this.label28.Text = "AP";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(135, 16);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(22, 13);
+            this.label27.TabIndex = 30;
+            this.label27.Text = "HP";
+            // 
+            // buttonLevelUp
+            // 
+            this.buttonLevelUp.Location = new System.Drawing.Point(691, 488);
+            this.buttonLevelUp.Name = "buttonLevelUp";
+            this.buttonLevelUp.Size = new System.Drawing.Size(75, 23);
+            this.buttonLevelUp.TabIndex = 54;
+            this.buttonLevelUp.Text = "Level Up(1)";
+            this.buttonLevelUp.UseVisualStyleBackColor = true;
+            this.buttonLevelUp.Click += new System.EventHandler(this.buttonLevelUp_Click);
             // 
             // lblSurvival
             // 
@@ -611,15 +712,6 @@
             this.label10.TabIndex = 27;
             this.label10.Text = "Barter";
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(351, 201);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(163, 13);
-            this.label16.TabIndex = 22;
-            this.label16.Text = "Speech/theiving check buttons?";
-            // 
             // lblLuc
             // 
             this.lblLuc.AutoSize = true;
@@ -859,7 +951,6 @@
             this.tabGeneral.TabIndex = 4;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
-            this.tabGeneral.Click += new System.EventHandler(this.TabGeneral_Click);
             // 
             // tabPage
             // 
@@ -941,12 +1032,22 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(868, 608);
             this.tabPage1.TabIndex = 18;
             this.tabPage1.Text = "Data";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(385, 101);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(103, 13);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Check butons here?";
             // 
             // tabInfo
             // 
@@ -994,8 +1095,13 @@
             this.tabStatus.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addXP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addAP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addHP)).EndInit();
             this.tabPage.ResumeLayout(false);
             this.tabControlItems.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1028,7 +1134,6 @@
         private System.Windows.Forms.Label lblXPtext;
         private System.Windows.Forms.Label lblAPtext;
         private System.Windows.Forms.Label lblHPtext;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblLuc;
         private System.Windows.Forms.Label lblAgi;
         private System.Windows.Forms.Label lblInt;
@@ -1073,16 +1178,24 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button buttonXP;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonLevelUp;
         private System.Windows.Forms.Label lblLevel;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBoxXP;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.NumericUpDown addXP;
+        private System.Windows.Forms.NumericUpDown addAP;
+        private System.Windows.Forms.NumericUpDown addHP;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button5;
     }
 }

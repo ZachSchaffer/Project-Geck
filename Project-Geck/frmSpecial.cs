@@ -54,7 +54,7 @@ namespace Geck
             if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Str") < 10))
             {
                 player.SetAttribute("Str", Strength + 1);
-                player.SetSpecialPoints(player.GetSpecialPoints() - 1);
+                player.SpecialPoints -= 1;
             }
 
             else if (player.GetAttribute("Str") < 10)
@@ -71,7 +71,7 @@ namespace Geck
             if (player.GetAttribute("Str") > 1)
             {
                 player.SetAttribute("Str", Strength - 1);
-                player.SetSpecialPoints((player.GetSpecialPoints()) + 1);
+                player.SpecialPoints += 1;
             }
 
 
@@ -99,7 +99,7 @@ namespace Geck
             if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Per") < 10))
             {
                 player.SetAttribute("Per", Perception + 1);
-                player.SetSpecialPoints(player.GetSpecialPoints() - 1);
+                player.SpecialPoints -= 1;
             }
 
             else if (player.GetAttribute("Per") < 10)
@@ -116,7 +116,7 @@ namespace Geck
             if (player.GetAttribute("Cha") > 1)
             {
                 player.SetAttribute("Cha", Charisma - 1);
-                player.SetSpecialPoints((player.GetSpecialPoints()) + 1);
+                player.SpecialPoints += 1;
             }
 
 
@@ -134,7 +134,7 @@ namespace Geck
             if (player.GetAttribute("Per") > 1)
             {
                 player.SetAttribute("Per", Perception - 1);
-                player.SetSpecialPoints((player.GetSpecialPoints()) + 1);
+                player.SpecialPoints += 1;
             }
 
 
@@ -152,7 +152,7 @@ namespace Geck
             if (player.GetSpecialPoints() > 0 && (player.GetAttribute("End") < 10))
             {
                 player.SetAttribute("End", Endurance + 1);
-                player.SetSpecialPoints(player.GetSpecialPoints() - 1);
+                player.SpecialPoints -= 1;
             }
 
             else if (player.GetAttribute("End") < 10)
@@ -169,7 +169,7 @@ namespace Geck
             if (player.GetAttribute("End") > 1)
             {
                 player.SetAttribute("End", Endurance - 1);
-                player.SetSpecialPoints((player.GetSpecialPoints()) + 1);
+                player.SpecialPoints += 1;
             }
 
 
@@ -187,7 +187,7 @@ namespace Geck
             if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Cha") < 10))
             {
                 player.SetAttribute("Cha", Charisma + 1);
-                player.SetSpecialPoints(player.GetSpecialPoints() - 1);
+                player.SpecialPoints -= 1;
             }
 
             else if (player.GetAttribute("Cha") < 10)
@@ -204,7 +204,7 @@ namespace Geck
             if (player.GetAttribute("Int") > 1)
             {
                 player.SetAttribute("Int", Intelligence - 1);
-                player.SetSpecialPoints((player.GetSpecialPoints()) + 1);
+                player.SpecialPoints += 1;
             }
 
 
@@ -222,7 +222,7 @@ namespace Geck
             if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Int") < 10))
             {
                 player.SetAttribute("Int", Intelligence + 1);
-                player.SetSpecialPoints(player.GetSpecialPoints() - 1);
+                player.SpecialPoints -= 1;
             }
 
             else if (player.GetAttribute("Int") < 10)
@@ -239,7 +239,7 @@ namespace Geck
             if (player.GetAttribute("Agi") > 1)
             {
                 player.SetAttribute("Agi", Agility - 1);
-                player.SetSpecialPoints((player.GetSpecialPoints()) + 1);
+                player.SpecialPoints += 1;
             }
 
 
@@ -257,7 +257,7 @@ namespace Geck
             if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Agi") < 10))
             {
                 player.SetAttribute("Agi", Agility + 1);
-                player.SetSpecialPoints(player.GetSpecialPoints() - 1);
+                player.SpecialPoints -= 1;
             }
 
             else if (player.GetAttribute("Agi") < 10)
@@ -274,7 +274,7 @@ namespace Geck
             if (player.GetAttribute("Luc") > 1)
             {
                 player.SetAttribute("Luc", Luck - 1);
-                player.SetSpecialPoints((player.GetSpecialPoints()) + 1);
+                player.SpecialPoints += 1;
             }
 
 
@@ -292,7 +292,7 @@ namespace Geck
             if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Luc") < 10))
             {
                 player.SetAttribute("Luc", Luck + 1);
-                player.SetSpecialPoints(player.GetSpecialPoints() - 1);
+                player.SpecialPoints -= 1;
             }
 
             else if (player.GetAttribute("Luc") < 10)
