@@ -35,7 +35,6 @@
             this.tabControlStats = new System.Windows.Forms.TabControl();
             this.tabStatus = new System.Windows.Forms.TabPage();
             this.lblLevel = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
@@ -52,7 +51,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.buttonLevelUp = new System.Windows.Forms.Button();
             this.lblSurvival = new System.Windows.Forms.Label();
             this.lblUnarmed = new System.Windows.Forms.Label();
             this.lblScience = new System.Windows.Forms.Label();
@@ -206,10 +204,8 @@
             // 
             this.tabStatus.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tabStatus.Controls.Add(this.lblLevel);
-            this.tabStatus.Controls.Add(this.button4);
             this.tabStatus.Controls.Add(this.label25);
             this.tabStatus.Controls.Add(this.groupBox1);
-            this.tabStatus.Controls.Add(this.buttonLevelUp);
             this.tabStatus.Controls.Add(this.lblSurvival);
             this.tabStatus.Controls.Add(this.lblUnarmed);
             this.tabStatus.Controls.Add(this.lblScience);
@@ -274,15 +270,6 @@
             this.lblLevel.Size = new System.Drawing.Size(32, 13);
             this.lblLevel.TabIndex = 56;
             this.lblLevel.Text = "_LVL";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(691, 435);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 27;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // label25
             // 
@@ -457,16 +444,6 @@
             this.label27.Size = new System.Drawing.Size(22, 13);
             this.label27.TabIndex = 30;
             this.label27.Text = "HP";
-            // 
-            // buttonLevelUp
-            // 
-            this.buttonLevelUp.Location = new System.Drawing.Point(691, 488);
-            this.buttonLevelUp.Name = "buttonLevelUp";
-            this.buttonLevelUp.Size = new System.Drawing.Size(75, 23);
-            this.buttonLevelUp.TabIndex = 54;
-            this.buttonLevelUp.Text = "Level Up(1)";
-            this.buttonLevelUp.UseVisualStyleBackColor = true;
-            this.buttonLevelUp.Click += new System.EventHandler(this.buttonLevelUp_Click);
             // 
             // lblSurvival
             // 
@@ -1178,8 +1155,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button buttonLevelUp;
         private System.Windows.Forms.Label lblLevel;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label29;

@@ -14,41 +14,60 @@ namespace Geck
     {
 
         Player player;
+        List<Perk> perkQueue = new List<Perk>();
 
         //I need a better fix for this, but when the form initializes, it runs through each method it seems, which decrements skill points. So, for now I am doing this sloppy workaround
         bool firstPass = true;
 
-        public frmLevelUp(Player player)
+        public frmLevelUp(Player player1)
         {
-            this.player = player;
+
+            //There is still issues with storing the previous things to roll back, either redo it or make new variables in player
+            this.player = player1;
             InitializeComponent();
-            lblSkillPoints.Text = this.player.GetAttribute("Skill_Points").ToString();
-            numericUpDown1.Value = this.player.GetAttribute("Barter");
-            numericUpDown2.Value = this.player.GetAttribute("EW");
-            numericUpDown3.Value = this.player.GetAttribute("Explosives");
-            numericUpDown4.Value = this.player.GetAttribute("Guns");
-            numericUpDown5.Value = this.player.GetAttribute("Lockpick");
-            numericUpDown6.Value = this.player.GetAttribute("Medicine");
-            numericUpDown7.Value = this.player.GetAttribute("MW");
-            numericUpDown8.Value = this.player.GetAttribute("Repair");
-            numericUpDown9.Value = this.player.GetAttribute("Science");
-            numericUpDown10.Value = this.player.GetAttribute("Sneak");
-            numericUpDown11.Value = this.player.GetAttribute("Speech");
-            numericUpDown12.Value = this.player.GetAttribute("Survival");
-            numericUpDown13.Value = this.player.GetAttribute("Unarmed");
-            numericUpDown1.Minimum = this.player.GetAttribute("Barter");
-            numericUpDown2.Minimum = this.player.GetAttribute("EW");
-            numericUpDown3.Minimum = this.player.GetAttribute("Explosives");
-            numericUpDown4.Minimum = this.player.GetAttribute("Guns");
-            numericUpDown5.Minimum = this.player.GetAttribute("Lockpick");
-            numericUpDown6.Minimum = this.player.GetAttribute("Medicine");
-            numericUpDown7.Minimum = this.player.GetAttribute("MW");
-            numericUpDown8.Minimum = this.player.GetAttribute("Repair");
-            numericUpDown9.Minimum = this.player.GetAttribute("Science");
-            numericUpDown10.Minimum = this.player.GetAttribute("Sneak");
-            numericUpDown11.Minimum = this.player.GetAttribute("Speech");
-            numericUpDown12.Minimum = this.player.GetAttribute("Survival");
-            numericUpDown13.Minimum = this.player.GetAttribute("Unarmed");
+            lblSkillPoints.Text = player.GetAttribute("Skill_Points").ToString();
+            numericUpDown1.Value = player.GetAttribute("Barter");
+            numericUpDown2.Value = player.GetAttribute("EW");
+            numericUpDown3.Value = player.GetAttribute("Explosives");
+            numericUpDown4.Value = player.GetAttribute("Guns");
+            numericUpDown5.Value = player.GetAttribute("Lockpick");
+            numericUpDown6.Value = player.GetAttribute("Medicine");
+            numericUpDown7.Value = player.GetAttribute("MW");
+            numericUpDown8.Value = player.GetAttribute("Repair");
+            numericUpDown9.Value = player.GetAttribute("Science");
+            numericUpDown10.Value = player.GetAttribute("Sneak");
+            numericUpDown11.Value = player.GetAttribute("Speech");
+            numericUpDown12.Value = player.GetAttribute("Survival");
+            numericUpDown13.Value = player.GetAttribute("Unarmed");
+            numericUpDown1.Minimum = player.GetAttribute("Barter");
+            numericUpDown2.Minimum = player.GetAttribute("EW");
+            numericUpDown3.Minimum = player.GetAttribute("Explosives");
+            numericUpDown4.Minimum = player.GetAttribute("Guns");
+            numericUpDown5.Minimum = player.GetAttribute("Lockpick");
+            numericUpDown6.Minimum = player.GetAttribute("Medicine");
+            numericUpDown7.Minimum = player.GetAttribute("MW");
+            numericUpDown8.Minimum = player.GetAttribute("Repair");
+            numericUpDown9.Minimum = player.GetAttribute("Science");
+            numericUpDown10.Minimum = player.GetAttribute("Sneak");
+            numericUpDown11.Minimum = player.GetAttribute("Speech");
+            numericUpDown12.Minimum = player.GetAttribute("Survival");
+            numericUpDown13.Minimum = player.GetAttribute("Unarmed");
+
+            foreach (Perk i in player.Perklist)
+            {
+                if (!(i.Racial) && !(i.Name.Equals("error")) && !i.Taken)
+                    listBox1.Items.Add(i.Name);
+
+            }
+
+            foreach(Perk i in player.Playerperks)
+            {
+                if (!i.Racial && !i.Name.Equals("error"))
+                    listBox2.Items.Add(i.GetName());
+            }
+                
+
+            //this can probably be done better and is probably bad coding practice but eh
             firstPass = false;
 
         }
@@ -328,6 +347,11 @@ namespace Geck
                 player.Speech = (int)numericUpDown11.Value;
                 player.Survival = (int)numericUpDown12.Value;
                 player.Unarmed = (int)numericUpDown13.Value;
+                foreach(Perk i in perkQueue)
+                {
+                    player.AddPerk(i.Name);
+
+                }
                 player.Level++;
                 DialogResult = DialogResult.OK;
                 Close();
@@ -341,6 +365,31 @@ namespace Geck
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            if (MessageBox.Show("Are you sure you want to take " + listBox1.SelectedItem + "?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                perkQueue.Add(player.GetPerk(listBox1.SelectedItem.ToString()));
+                listBox2.Items.Add(listBox1.SelectedItem);
+                listBox1.Items.Remove(listBox1.SelectedItem);
+            }
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if(listBox1.SelectedItem != null)
+                richTextBox1.Text = (player.GetPerk(listBox1.SelectedItem.ToString()).GetName() + ":\n" + player.GetPerk(listBox1.SelectedItem.ToString()).Definition);
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedItem != null)
+                richTextBox1.Text = (player.GetPerk(listBox2.SelectedItem.ToString()).GetName() + ":\n" + player.GetPerk(listBox2.SelectedItem.ToString()).Definition);
         }
     }
 }

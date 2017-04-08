@@ -95,7 +95,10 @@ namespace Geck
                     MdiParent = this,
                     WindowState = FormWindowState.Maximized
                 };
+
+                if(player.Created)
                 career.Show();
+
             }
            
         }
@@ -121,7 +124,6 @@ namespace Geck
                     {
                         this.player = player;
                         player.Created = true;
-                        player.AddPerk("Intense Training");
 
                         FrmCareer career = new FrmCareer(player)
                         {

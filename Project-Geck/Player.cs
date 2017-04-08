@@ -34,7 +34,7 @@ namespace Geck
         //Eventually make it so that the player can asd their own skils
 
         #region Perk List
-        List<Perk> perklist = new List<Perk>(new Perk[] {
+        private List<Perk> _Perklist = new List<Perk>(new Perk[] {
             new Perk("error","error"),
             new Perk("Lady Killer","In combat you do increased damage on people of the opposite sex. You also have an easier time convincing them during speech checks."), //Must be male
             new Perk("Black Widow","In combat you do increased damage on people of the opposite sex. You also have an easier time convincing them during speech checks."), //Must be female
@@ -118,16 +118,16 @@ namespace Geck
             new Perk("Balance","All SPECIAL stats are increased by 1"), //codeeeeeee
 
             //These are my arbitrary racial perks 
-            new Perk("Ghoulified","Healed by light rads, and immune to the effects of radiation up to 600 Rads."),
-            new Perk("One of Us","Increased Speech, Charisma, and Barter among ghouls. Feral ghouls are non-hostile."),
-            new Perk("\"Zombie!\"", "Decreased Speech, Charisma, and Barter among humans."),
-            new Perk("Freak of Nature","Immune to the effects of radiation up to 800 rads."),
-            new Perk("Vault Educated", 10, 10 , 10, "Science", "Medicine", "Repair", "Gain 10 points in Science, Medicine, and Repair."),
-            new Perk("Stigmatized","Lose 15 Speech when talking with a human."),
-            new Perk("Brawler", 10, 10, "Melee", "Unarmed", "Gain 10 points in Melee and Unarmed."),
-            new Perk("Brutish", -15, -15 ,"Speech", "Barter", "Lose 15 points in Speech and Barter"),
-            new Perk("Schizophrenia","Due to an excess use of Stealth Boys, you have developed schizophrenia. In addition to auditory hallucinations, your Speech and Barter are capped at 50, and your CHA is capped at 5."),
-            new Perk("Super Soldier","Your Sneak and Guns start at 30."), 
+            new Perk("Ghoulified","Healed by light rads, and immune to the effects of radiation up to 600 Rads.", true),
+            new Perk("One of Us","Increased Speech, Charisma, and Barter among ghouls. Feral ghouls are non-hostile.", true),
+            new Perk("\"Zombie!\"", "Decreased Speech, Charisma, and Barter among humans.", true),
+            new Perk("Freak of Nature","Immune to the effects of radiation up to 800 rads.", true),
+            new Perk("Vault Educated", 10, 10 , 10, "Science", "Medicine", "Repair", "Gain 10 points in Science, Medicine, and Repair.", true),
+            new Perk("Stigmatized","Lose 15 Speech when talking with a human.", true),
+            new Perk("Brawler", 10, 10, "Melee", "Unarmed", "Gain 10 points in Melee and Unarmed.", true),
+            new Perk("Brutish", -15, -15 ,"Speech", "Barter", "Lose 15 points in Speech and Barter", true),
+            new Perk("Schizophrenia","Due to an excess use of Stealth Boys, you have developed schizophrenia. In addition to auditory hallucinations, your Speech and Barter are capped at 50, and your CHA is capped at 5.", true),
+            new Perk("Super Soldier","Your Sneak and Guns start at 30.", true), 
 
             
             });
@@ -162,7 +162,6 @@ namespace Geck
 
         //The list of the player's taken perks
         List<Perk> playerperks = new List<Perk>();
-
         List<Perk> Traits = new List<Perk>();
 
         private String _Name = String.Empty;
@@ -190,6 +189,7 @@ namespace Geck
         private int _Skill_Points_On_Level = 0;
         private int _Limb_Damage_Percent = 100;
         private bool _Addicted = false;
+        private String _AddictedSubstance; //add to load
 
         private bool _BarterTagged = false;
         private bool _EWTagged = false;
@@ -204,6 +204,7 @@ namespace Geck
         private bool _SpeechTagged = false;
         private bool _SurvivalTagged = false;
         private bool _UnarmedTagged = false;
+
         private bool _Created = false;
 
         public int Karma { get => _Karma; set => _Karma = value; }
@@ -266,6 +267,9 @@ namespace Geck
         public int Speech { get => _Speech; set => _Speech = value; }
         public int Survival { get => _Survival; set => _Survival = value; }
         public int Unarmed { get => _Unarmed; set => _Unarmed = value; }
+        public List<Perk> Playerperks { get => playerperks; set => playerperks = value; }
+        public List<Perk> Perklist { get => _Perklist; set => _Perklist = value; }
+        public string AddictedSubstance { get => _AddictedSubstance; set => _AddictedSubstance = value; }
 
 
         #endregion
@@ -558,14 +562,14 @@ namespace Geck
         }
 
         /// <summary>
-        /// Will attempt to apply all perks that modify a direct attriubte or prompt the user for input.
+        /// Will attempt to apply all perks that directly modify an attriubte or prompt the user for input.
         /// </summary>
         public void ApplyPerks()
         {
 
-            foreach (Perk i in playerperks)
+            foreach (Perk i in Playerperks)
             {
-                if(!i.applied)
+                if(!i.Applied)
                 {
 
                     //These if statements check if the perk modifies one two or three values respctively, and then checks for perks that require user input.
@@ -574,14 +578,12 @@ namespace Geck
                     if (i.GetPerkType() == 2)
                     {
                         this.SetAttribute(i.GetId(), GetAttribute(i.GetId()) + i.GetValue());
-                        i.applied = true;
                     }
 
                     if (i.GetPerkType() == 3)
                     {
                         this.SetAttribute(i.GetId(), GetAttribute(i.GetId()) + i.GetValue());
                         this.SetAttribute(i.GetSecondaryId(), GetAttribute(i.GetSecondaryId()) + i.GetSecondaryValue());
-                        i.applied = true;
                     }
 
                     if (i.GetPerkType() == 4)
@@ -589,23 +591,17 @@ namespace Geck
                         this.SetAttribute(i.GetId(), GetAttribute(i.GetId()) + i.GetValue());
                         this.SetAttribute(i.GetSecondaryId(), GetAttribute(i.GetSecondaryId()) + i.GetSecondaryValue());
                         this.SetAttribute(i.GetTertiaryId(), GetAttribute(i.GetTertiaryId()) + i.GetTertiaryValue());
-                        i.applied = true;
                     }
-                    //Code the rest here laddie (make sure to mark as applied)
+
+                    //Code special perks here (users won't be allowed to enter these types)
 
                     if (i.GetName().Equals("Intense Training"))
                     {
                         frmSpecial frmSpec = new frmSpecial(this);
-                        frmSpec.Show();
+                        frmSpec.ShowDialog();
                     }
 
-                    //if (i.GetName().Equals("Rapid Reload"))
-
-                    if(i.GetHashCode().Equals("Toughness"))
-                    {
-
-                    }
-
+                    i.Applied = true;
 
                 }
 
@@ -618,16 +614,28 @@ namespace Geck
         /// <param name="id"></param>
         public void AddPerk(int id)
         {
-            playerperks.Add(perklist[id]);
+            Perk i = Perklist[id];
+            i.Taken = true;
+            Playerperks.Add(i);
         }
 
         public void AddPerk(String perkname)
         {
-            foreach(Perk i in perklist)
+            foreach(Perk i in Perklist)
             {
-                if (i.GetName().Equals(perkname))
-                    playerperks.Add(i);
+                if (i.Name.Equals(perkname))
+                {
+                    i.Taken = true;
+                    Playerperks.Add(i);
+                }
+                    
             }
+        }
+
+        public void CreateNewPerk(String Name, String Definition)
+        {
+            Perk newPerk = new Perk(Name, Definition);
+            Perklist.Add(newPerk);
         }
 
         /// <summary>
@@ -637,18 +645,29 @@ namespace Geck
         /// <returns></returns>
         public Perk GetPerk(String PerkName)
         {
-            foreach (Perk i in playerperks)
+            foreach (Perk i in Perklist)
             {
                 if (i.GetName().Equals(PerkName))
                     return i;
             }
-            MessageBox.Show("Perk not found");
-            return null;
+
+            return Perklist[0];
         }
 
-        public List<Perk> GetAllPerks()
+        public Perk GetPlayerPerk(String PerkName)
         {
-            return playerperks;
+            foreach (Perk i in Playerperks)
+            {
+                if (i.Name.Equals(PerkName))
+                    return i;
+            }
+
+            return Perklist[0];
+        }
+
+        public List<Perk> GetPlayerPerkList()
+        {
+            return Playerperks;
         }
 
         public void Save()
@@ -708,7 +727,7 @@ namespace Geck
             objWriter.WriteStartElement("Perks");
 
             //Wrtie Perks
-            foreach (Perk i in playerperks)
+            foreach (Perk i in Playerperks)
                 objWriter.WriteElementString("Perk", i.GetName());
 
             objWriter.WriteEndElement();
@@ -768,10 +787,11 @@ namespace Geck
             objXmlCharacter.ReadInt("SkillPoints", ref _Skill_Points);
             objXmlCharacter.ReadInt("SkillPointsOnLevel", ref _Skill_Points_On_Level);
 
+            //Load Perks
             foreach (XmlElement i in objXmlCharacter.SelectSingleNode("Perks"))
             {
                 counter = 0;
-                foreach (Perk j in perklist)
+                foreach (Perk j in Perklist)
                 {
                     if (j.GetName().Equals(i.InnerText))
                         AddPerk(counter);

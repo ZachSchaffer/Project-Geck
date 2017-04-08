@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Geck
@@ -27,6 +28,8 @@ namespace Geck
 
         public void UpdateCharacterInfo()
         {
+            player.ApplyPerks();
+
             lblHP.Text = (player.HP + " / " + player.MaxHP);
             //TODO: figure out how AP is gonna work
 
@@ -74,7 +77,6 @@ namespace Geck
             lblSurvival.Text = (player.Survival.ToString());
 
             lblUnarmed.Text = (player.Unarmed.ToString());
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -83,7 +85,9 @@ namespace Geck
                 player.HP += (int)addHP.Value;
 
             else
-                MessageBox.Show("You cannot increase your HP past its maximum value.");
+                player.HP = player.MaxHP;
+
+            addHP.Value = 0;
             UpdateCharacterInfo();
         }
 
@@ -108,6 +112,12 @@ namespace Geck
             int remainingXP = 0;
             int backupXP = player.XP;
             int backupLvl = player.Level;
+            List<Perk> backupPerks = new List<Perk>();
+
+            foreach(Perk i in player.Playerperks)
+            {
+                backupPerks.Add(i);
+            }
 
 
             if (player.XP + addXP.Value < player.XpToNextLevel)
@@ -139,6 +149,11 @@ namespace Geck
                             remainingXP = backupXP;
                             player.Level = backupLvl;
                             levelcount = 0;
+                            player.Playerperks = new List<Perk>();
+                            foreach(Perk i in backupPerks)
+                            {
+                                player.Playerperks.Add(i);
+                            }
                         }
 
                     }
@@ -159,7 +174,9 @@ namespace Geck
                 player.HP -= (int)addHP.Value;
 
             else
-                MessageBox.Show("You cannot decrease your HP below 0.");
+                player.HP = 0;
+
+            addHP.Value = 0;
             UpdateCharacterInfo();
         }
 
@@ -174,7 +191,9 @@ namespace Geck
                 player.XP -= (int)addXP.Value;
 
             else
-                MessageBox.Show("You cannot decrease your XP below 0.");
+                MessageBox.Show("You cannot decrease your XP below 0. To lower your level, you must do it manually in the Data tab.");
+
+            addXP.Value = 0;
             UpdateCharacterInfo();
         }
 
@@ -189,7 +208,7 @@ namespace Geck
 
         private void button9_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Would you like toset your HP to 1?", "", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Would you like to set your HP to 1?", "", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
                 player.HP = 1;
 

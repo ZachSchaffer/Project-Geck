@@ -7,102 +7,167 @@ namespace Geck
 
         //"Id" refers to the name of the associated attribute
 
-        String name;
-        int value;
-        int value1;
-        int value2;
-        String id;
-        String id1;
-        String id2;
-        int type;
-        String effect;
-        String definition;
-        public bool applied = false;
+        String _Name;
+        int _Value;
+        int _Value1;
+        int _Value2;
+        String _Id;
+        String _Id1;
+        String _Id2;
+        int _Type;
+        String _Definition;
+        int _LevelReq;
+        bool _Racial;
+        bool _Applied;
+        bool _Taken;
+
+        public string Name { get => _Name; set => _Name = value; }
+        public int Value { get => _Value; set => _Value = value; }
+        public int Value1 { get => _Value1; set => _Value1 = value; }
+        public int Value2 { get => _Value2; set => _Value2 = value; }
+        public string Id { get => _Id; set => _Id = value; }
+        public string Id1 { get => _Id1; set => _Id1 = value; }
+        public string Id2 { get => _Id2; set => _Id2 = value; }
+        public int Type { get => _Type; set => _Type = value; }
+        public string Definition { get => _Definition; set => _Definition = value; }
+        public int LevelReq { get => _LevelReq; set => _LevelReq = value; }
+        public bool Racial { get => _Racial; set => _Racial = value; }
+        public bool Applied { get => _Applied; set => _Applied = value; }
+        public bool Taken { get => _Taken; set => _Taken = value; }
 
         public Perk(String Name, String Definition)
         {
-            name = Name;
-            type = 1;
-            definition = Definition;
+            this.Name = Name;
+            Type = 1;
+            this.Definition = Definition;
         }
 
         public Perk(String Name, int Value, String id, String Definition) //Type 2: Adds or subtracts a value
         {
-            name = Name;
-            value = Value;
-            this.id = id;
-            type = 2; 
-            definition = Definition;
+            this.Name = Name;
+            this.Value = Value;
+            this.Id = id;
+            Type = 2;
+            this.Definition = Definition;
         }
 
         public Perk(String Name, int Value1, int Value2, String id1, String id2, String Definition) //Type 3: Adds or subtracts 2 values
         {
-            name = Name;
-            value = Value1;
-            value1 = Value2;
-            id = id1;
-            this.id1 = id2;
-            definition = Definition;
-            type = 3;
+            this.Name = Name;
+            Value = Value1;
+            this.Value1 = Value2;
+            Id = id1;
+            this.Id1 = id2;
+            this.Definition = Definition;
+            Type = 3;
         }
 
         public Perk(String Name, int Value1, int Value2, int Value3, String id1, String id2, String id3, String Definition) //Type 4: Adds or subtracts 3 values
         {
-            name = Name;
-            value = Value1;
-            value1 = Value2;
-            value2 = Value3;
-            id = id1;
-            this.id1 = id2;
-            this.id2 = id3;
-            definition = Definition;
-            type = 4;
+            this.Name = Name;
+            Value = Value1;
+            this.Value1 = Value2;
+            this.Value2 = Value3;
+            Id = id1;
+            this.Id1 = id2;
+            this.Id2 = id3;
+            this.Definition = Definition;
+            Type = 4;
         }
 
+        public Perk(String Name, String Definition, bool racial)
+        {
+            this.Name = Name;
+            Type = 1;
+            this.Definition = Definition;
+            Racial = racial;
+        }
 
+        public Perk(String Name, int Value, String id, String Definition, bool racial) //Type 2: Adds or subtracts a value
+        {
+            this.Name = Name;
+            this.Value = Value;
+            this.Id = id;
+            Type = 2;
+            this.Definition = Definition;
+            Racial = racial;
+        }
+
+        public Perk(String Name, int Value1, int Value2, String id1, String id2, String Definition, bool racial) //Type 3: Adds or subtracts 2 values
+        {
+            this.Name = Name;
+            Value = Value1;
+            this.Value1 = Value2;
+            Id = id1;
+            this.Id1 = id2;
+            this.Definition = Definition;
+            Type = 3;
+            Racial = racial;
+        }
+
+        public Perk(String Name, int Value1, int Value2, int Value3, String id1, String id2, String id3, String Definition, bool racial) //Type 4: Adds or subtracts 3 values
+        {
+            this.Name = Name;
+            Value = Value1;
+            this.Value1 = Value2;
+            this.Value2 = Value3;
+            Id = id1;
+            this.Id1 = id2;
+            this.Id2 = id3;
+            this.Definition = Definition;
+            Type = 4;
+            Racial = racial;
+        }
+
+        //Antiquated methods. Tidy this up eventually.
         public int GetValue()
         {
-            return value;
+            return Value;
         }
 
         public int GetSecondaryValue()
         {
-            return value1;
+            return Value1;
         }
 
         public int GetTertiaryValue()
         {
-            return value2;
+            return Value2;
         }
 
         public String GetId()
         {
-            return id;
+            return Id;
         }
 
         public String GetSecondaryId()
         {
-            return id1;
+            return Id1;
         }
 
         public String GetTertiaryId()
         {
-            return id2;
+            return Id2;
         }
 
         public int GetPerkType()
         {
-            return type;
+            return Type;
         }
 
         public String GetName()
         {
-            return name;
+            return Name;
         }
 
         public String Define()
         {
-            return definition;
+            return Definition;
+        }
+
+        public String toString()
+        {
+            return Name;
         }
 
 
