@@ -98,7 +98,7 @@ namespace Geck
 
                 if(player.Created)
                 career.Show();
-
+                closeCharacterToolStripMenuItem.Visible = true;
             }
            
         }
@@ -132,6 +132,9 @@ namespace Geck
                         };
 
                         career.Show();
+                        closeCharacterToolStripMenuItem.Visible = true;
+
+                        
 
                     }
 
@@ -180,6 +183,11 @@ namespace Geck
         private void SaveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void closeCharacterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -30,6 +30,12 @@ namespace Geck
         {
             player.ApplyPerks();
 
+            lblName.Text = player.Name;
+
+            lblRace.Text = player.Race;
+
+            lblGender.Text = player.Gender;
+
             lblHP.Text = (player.HP + " / " + player.MaxHP);
             //TODO: figure out how AP is gonna work
 

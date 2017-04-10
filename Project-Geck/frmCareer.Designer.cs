@@ -34,6 +34,10 @@
             this.tabCommon = new System.Windows.Forms.TabPage();
             this.tabControlStats = new System.Windows.Forms.TabControl();
             this.tabStatus = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.lblLevel = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -115,10 +119,9 @@
             this.label26 = new System.Windows.Forms.Label();
             this.tabInfo = new System.Windows.Forms.TabControl();
             this.tabOtherInfo = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblGender = new System.Windows.Forms.Label();
+            this.lblRace = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -127,6 +130,7 @@
             this.tabCommon.SuspendLayout();
             this.tabControlStats.SuspendLayout();
             this.tabStatus.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addXP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addAP)).BeginInit();
@@ -135,7 +139,6 @@
             this.tabControlItems.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabInfo.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitMain
@@ -267,6 +270,47 @@
             this.tabStatus.Size = new System.Drawing.Size(857, 576);
             this.tabStatus.TabIndex = 0;
             this.tabStatus.Text = "Status";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblRace);
+            this.groupBox2.Controls.Add(this.lblGender);
+            this.groupBox2.Controls.Add(this.lblName);
+            this.groupBox2.Controls.Add(this.label31);
+            this.groupBox2.Controls.Add(this.label30);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Location = new System.Drawing.Point(321, 11);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(215, 114);
+            this.groupBox2.TabIndex = 57;
+            this.groupBox2.TabStop = false;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(6, 81);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(36, 13);
+            this.label31.TabIndex = 2;
+            this.label31.Text = "Race:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(6, 51);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(45, 13);
+            this.label30.TabIndex = 1;
+            this.label30.Text = "Gender:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 21);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(38, 13);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Name:";
             // 
             // lblLevel
             // 
@@ -1055,44 +1099,32 @@
             this.tabOtherInfo.Tag = "Tab_OtherInfo";
             this.tabOtherInfo.Text = "Quick Stats";
             // 
-            // groupBox2
+            // lblName
             // 
-            this.groupBox2.Controls.Add(this.label31);
-            this.groupBox2.Controls.Add(this.label30);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Location = new System.Drawing.Point(503, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(348, 291);
-            this.groupBox2.TabIndex = 57;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(51, 21);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(41, 13);
+            this.lblName.TabIndex = 3;
+            this.lblName.Text = "label32";
             // 
-            // label16
+            // lblGender
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 21);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(38, 13);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Name:";
+            this.lblGender.AutoSize = true;
+            this.lblGender.Location = new System.Drawing.Point(51, 51);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(41, 13);
+            this.lblGender.TabIndex = 4;
+            this.lblGender.Text = "label33";
             // 
-            // label30
+            // lblRace
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(6, 46);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(45, 13);
-            this.label30.TabIndex = 1;
-            this.label30.Text = "Gender:";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(6, 76);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(36, 13);
-            this.label31.TabIndex = 2;
-            this.label31.Text = "Race:";
+            this.lblRace.AutoSize = true;
+            this.lblRace.Location = new System.Drawing.Point(51, 81);
+            this.lblRace.Name = "lblRace";
+            this.lblRace.Size = new System.Drawing.Size(41, 13);
+            this.lblRace.TabIndex = 5;
+            this.lblRace.Text = "label34";
             // 
             // FrmCareer
             // 
@@ -1115,6 +1147,8 @@
             this.tabControlStats.ResumeLayout(false);
             this.tabStatus.ResumeLayout(false);
             this.tabStatus.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addXP)).EndInit();
@@ -1125,8 +1159,6 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabInfo.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1223,5 +1255,8 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblRace;
+        private System.Windows.Forms.Label lblGender;
+        private System.Windows.Forms.Label lblName;
     }
 }

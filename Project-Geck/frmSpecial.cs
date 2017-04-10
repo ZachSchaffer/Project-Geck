@@ -53,7 +53,7 @@ namespace Geck
 
             if (player.GetSpecialPoints() > 0 && (player.Str < 10))
             {
-                player.Str--;
+                player.Str++;
                 player.SpecialPoints -= 1;
             }
 

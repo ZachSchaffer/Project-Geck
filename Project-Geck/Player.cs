@@ -225,7 +225,7 @@ namespace Geck
         public int XP { get => _XP; set => _XP = value; }
         public int XpToNextLevel { get => (1000*Level); set => _xpToNextLevel = value; } //set it to options.value eventually
         public int Skill_Points { get => _Skill_Points; set => _Skill_Points = value; }
-        public int Skill_Points_On_Level { get => _Skill_Points_On_Level; set => _Skill_Points_On_Level = value; }
+        public int Skill_Points_On_Level { get => 5 + 2*Int; set => _Skill_Points_On_Level = value; }
        // public int Limb_Damage_Percent { get => _Limb_Damage_Percent; set => _Limb_Damage_Percent = value; }
         public bool Addicted { get => _Addicted; set => _Addicted = value; }
         public bool BarterTagged { get => _BarterTagged; set => _BarterTagged = value; }

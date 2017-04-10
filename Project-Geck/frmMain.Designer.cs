@@ -38,6 +38,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.closeCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,8 @@
             this.fILEToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newCharacterToolStripMenuItem,
             this.loadCharacterToolStripMenuItem,
-            this.saveCharacterToolStripMenuItem});
+            this.saveCharacterToolStripMenuItem,
+            this.closeCharacterToolStripMenuItem});
             this.fILEToolStripMenuItem.Name = "fILEToolStripMenuItem";
             this.fILEToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fILEToolStripMenuItem.Text = "File";
@@ -97,6 +99,14 @@
             // 
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.SaveFileDialog1_FileOk);
             // 
+            // closeCharacterToolStripMenuItem
+            // 
+            this.closeCharacterToolStripMenuItem.Name = "closeCharacterToolStripMenuItem";
+            this.closeCharacterToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.closeCharacterToolStripMenuItem.Text = "Close Character";
+            this.closeCharacterToolStripMenuItem.Visible = false;
+            this.closeCharacterToolStripMenuItem.Click += new System.EventHandler(this.closeCharacterToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,6 +138,7 @@
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
         private System.Windows.Forms.ToolStripMenuItem saveCharacterToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem closeCharacterToolStripMenuItem;
     }
 }
 
