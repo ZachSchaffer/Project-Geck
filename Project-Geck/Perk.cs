@@ -18,8 +18,7 @@ namespace Geck
         String _Definition;
         int _LevelReq;
         bool _Racial;
-        bool _Applied;
-        bool _Taken;
+        
 
         public string Name { get => _Name; set => _Name = value; }
         public int Value { get => _Value; set => _Value = value; }
@@ -32,8 +31,7 @@ namespace Geck
         public string Definition { get => _Definition; set => _Definition = value; }
         public int LevelReq { get => _LevelReq; set => _LevelReq = value; }
         public bool Racial { get => _Racial; set => _Racial = value; }
-        public bool Applied { get => _Applied; set => _Applied = value; }
-        public bool Taken { get => _Taken; set => _Taken = value; }
+        
 
         public Perk(String Name, String Definition)
         {

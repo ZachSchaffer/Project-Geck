@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace Geck
 {
+    //TODO: All of this needs to be changed
     public partial class frmRace : Form
     {
         Player player = new Player();

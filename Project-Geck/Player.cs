@@ -86,7 +86,7 @@ namespace Geck
             new Perk("Robotics Expert","You do 25% more damage to robots. You can also sneak up behind them and disable them."),
             new Perk("Sniper","You are 25% more likely to hit a target's head."),
             new Perk("Fast Metabolism","Stimpaks now restore an additional 20% of your hit points."),
-            new Perk("Adamantium Skeleton", -50, "Limb_Damage", "Limb damage reduced by 50%."),
+            new Perk("Adamantium Skeleton", "Limb damage reduced by 50%."),
             new Perk("Center of Mass","You do an additional 15% damage when aiming at the torso."),
             new Perk("Chemist","Chems last twice as long."),
             new Perk("Light Step","Floor Traps and Mines will not be set off."),
@@ -125,7 +125,7 @@ namespace Geck
             new Perk("Vault Educated", 10, 10 , 10, "Science", "Medicine", "Repair", "Gain 10 points in Science, Medicine, and Repair.", true),
             new Perk("Stigmatized","Lose 15 Speech when talking with a human.", true),
             new Perk("Brawler", 10, 10, "Melee", "Unarmed", "Gain 10 points in Melee and Unarmed.", true),
-            new Perk("Brutish", -15, -15 ,"Speech", "Barter", "Lose 15 points in Speech and Barter", true),
+            new Perk("Brutish", -5, -5 ,"Speech", "Barter", "Lose 15 points in Speech and Barter", true),
             new Perk("Schizophrenia","Due to an excess use of Stealth Boys, you have developed schizophrenia. In addition to auditory hallucinations, your Speech and Barter are capped at 50, and your CHA is capped at 5.", true),
             new Perk("Super Soldier","Your Sneak and Guns start at 30.", true), 
 
@@ -162,32 +162,32 @@ namespace Geck
 
         //The list of the player's taken perks
         List<Perk> playerperks = new List<Perk>();
-        List<Perk> Traits = new List<Perk>();
+        List<Perk> appliedperks = new List<Perk>();
+        
 
         private String _Name = String.Empty;
         private String _Gender = String.Empty;
         private String _Race = String.Empty;
         private String _CurrencyName = String.Empty;
         private int _Karma = 0;
-        private int _VeryEvilKarma = -750;
+        private int _VeryEvilKarma = -750; //option
         private int _EvilKarma = -250;
         private int _GoodKarma = 250;
         private int _VeryGoodKarma = 750;
         private int _Currency = 0;
-        private int _level = 1;
+        private int _Level = 1;
         private int _AP;
-        private int _maxAP = 5 + (int)(Math.Floor((double)(5 / 2)));
+        private int _maxAP = 5 + (int)(Math.Floor((double)(5 / 2))); //option
         private int _Carry_Weight = 0; //fill 
-        private int _Crit_Chance = 0; //fill
-        private int _Crit_Damage_Percent = 100;
-        private int _DR = 0; //fill
-        private int _maxHP = 10; //fill
+        //private int _Crit_Chance = 0; //fill
+        //private int _Crit_Damage_Percent = 100;
+        //private int _DR = 0; //fill
+        private int _MaxHP = 10; //fill
         private int _HP = 10;
         private int _XP = 0;
-        private int _xpToNextLevel;
+        private int _xpToNextLevel; //option
         private int _Skill_Points = 0;
-        private int _Skill_Points_On_Level = 0;
-        private int _Limb_Damage_Percent = 100;
+        private int _Skill_Points_On_Level = 0; //option
         private bool _Addicted = false;
         private String _AddictedSubstance; //add to load
 
@@ -213,20 +213,20 @@ namespace Geck
         public int GoodKarma { get => _GoodKarma; set => _GoodKarma = value; }
         public int VeryGoodKarma { get => _VeryGoodKarma; set => _VeryGoodKarma = value; }
         public int Currency { get => _Currency; set => _Currency = value; }
-        public int Level { get => _level; set => _level = value; }
+        public int Level { get => _Level; set => _Level = value; }
         public int AP { get => _AP; set => _AP = value; }
         public int MaxAP { get => _maxAP; set => _maxAP = value; }
         public int Carry_Weight { get => _Carry_Weight; set => _Carry_Weight = value; }
-        public int Crit_Chance { get => _Crit_Chance; set => _Crit_Chance = value; }
-        public int Crit_Damage_Percent { get => _Crit_Damage_Percent; set => _Crit_Damage_Percent = value; }
-        public int DR { get => _DR; set => _DR = value; }
-        public int MaxHP { get => _maxHP; set => _maxHP = value; }
+        //public int Crit_Chance { get => _Crit_Chance; set => _Crit_Chance = value; }
+        //public int Crit_Damage_Percent { get => _Crit_Damage_Percent; set => _Crit_Damage_Percent = value; }
+        //public int DR { get => _DR; set => _DR = value; }
+        public int MaxHP { get => _MaxHP; set => _MaxHP = value; }
         public int HP { get => _HP; set => _HP = value; }
         public int XP { get => _XP; set => _XP = value; }
         public int XpToNextLevel { get => (1000*Level); set => _xpToNextLevel = value; } //set it to options.value eventually
         public int Skill_Points { get => _Skill_Points; set => _Skill_Points = value; }
         public int Skill_Points_On_Level { get => _Skill_Points_On_Level; set => _Skill_Points_On_Level = value; }
-        public int Limb_Damage_Percent { get => _Limb_Damage_Percent; set => _Limb_Damage_Percent = value; }
+       // public int Limb_Damage_Percent { get => _Limb_Damage_Percent; set => _Limb_Damage_Percent = value; }
         public bool Addicted { get => _Addicted; set => _Addicted = value; }
         public bool BarterTagged { get => _BarterTagged; set => _BarterTagged = value; }
         public bool EWTagged { get => _EWTagged; set => _EWTagged = value; }
@@ -270,6 +270,7 @@ namespace Geck
         public List<Perk> Playerperks { get => playerperks; set => playerperks = value; }
         public List<Perk> Perklist { get => _Perklist; set => _Perklist = value; }
         public string AddictedSubstance { get => _AddictedSubstance; set => _AddictedSubstance = value; }
+        public List<Perk> Appliedperks { get => appliedperks; set => appliedperks = value; }
 
 
         #endregion
@@ -346,8 +347,8 @@ namespace Geck
                 case "Karma":
                 return Karma;
 
-                case "Limb_Damage":
-                return Limb_Damage_Percent;
+               // case "Limb_Damage":
+              //  return Limb_Damage_Percent;
 
                 case "SpecialPoints":
                 return SpecialPoints;
@@ -358,8 +359,8 @@ namespace Geck
                 case "Skill_Points":
                 return Skill_Points;
 
-                case "DR":
-                return DR;
+                //case "DR":
+                //return DR;
 
                 case "Carry_Weight":
                 return Carry_Weight;
@@ -367,8 +368,8 @@ namespace Geck
                 case "Level":
                 return Level;
 
-                case "Crit_Chance":
-                return Crit_Chance;
+                //case "Crit_Chance":
+               // return Crit_Chance;
 
                 case "maxHP":
                 return MaxHP;
@@ -376,8 +377,8 @@ namespace Geck
                 case "AP":
                 return AP;
 
-                case "Crit_Damage":
-                return Crit_Damage_Percent;
+               // case "Crit_Damage":
+                //return Crit_Damage_Percent;
 
                 case "XP":
                 return XP;
@@ -478,8 +479,8 @@ namespace Geck
                 Karma = val;
                     return;
 
-                case "Limb_Damage":
-                Limb_Damage_Percent = val;
+               // case "Limb_Damage":
+               // Limb_Damage_Percent = val;
                     return;
 
                 case "SpecialPoints":
@@ -494,8 +495,8 @@ namespace Geck
                 Skill_Points = val;
                     return;
 
-                case "DR":
-                DR = val;
+                //case "DR":
+                //DR = val;
                     return;
 
                 case "Carry_Weight":
@@ -506,8 +507,8 @@ namespace Geck
                 Level = val;
                     return;
 
-                case "Crit_Chance":
-                Crit_Chance = val;
+                //case "Crit_Chance":
+                //Crit_Chance = val;
                     return;
 
                 case "maxHP":
@@ -519,8 +520,8 @@ namespace Geck
                     return;
 
 
-                case "Crit_Damage":
-                Crit_Damage_Percent = val;
+                //case "Crit_Damage":
+                //Crit_Damage_Percent = val;
                     return;
 
                 case "XP":
@@ -569,7 +570,7 @@ namespace Geck
 
             foreach (Perk i in Playerperks)
             {
-                if(!i.Applied)
+                if(Appliedperks.Contains(i) == false)
                 {
 
                     //These if statements check if the perk modifies one two or three values respctively, and then checks for perks that require user input.
@@ -578,12 +579,14 @@ namespace Geck
                     if (i.GetPerkType() == 2)
                     {
                         this.SetAttribute(i.GetId(), GetAttribute(i.GetId()) + i.GetValue());
+                        Appliedperks.Add(i);
                     }
 
                     if (i.GetPerkType() == 3)
                     {
                         this.SetAttribute(i.GetId(), GetAttribute(i.GetId()) + i.GetValue());
                         this.SetAttribute(i.GetSecondaryId(), GetAttribute(i.GetSecondaryId()) + i.GetSecondaryValue());
+                        Appliedperks.Add(i);
                     }
 
                     if (i.GetPerkType() == 4)
@@ -591,6 +594,7 @@ namespace Geck
                         this.SetAttribute(i.GetId(), GetAttribute(i.GetId()) + i.GetValue());
                         this.SetAttribute(i.GetSecondaryId(), GetAttribute(i.GetSecondaryId()) + i.GetSecondaryValue());
                         this.SetAttribute(i.GetTertiaryId(), GetAttribute(i.GetTertiaryId()) + i.GetTertiaryValue());
+                        Appliedperks.Add(i);
                     }
 
                     //Code special perks here (users won't be allowed to enter these types)
@@ -599,9 +603,10 @@ namespace Geck
                     {
                         frmSpecial frmSpec = new frmSpecial(this);
                         frmSpec.ShowDialog();
+                        Appliedperks.Add(i);
                     }
 
-                    i.Applied = true;
+                   
 
                 }
 
@@ -615,7 +620,6 @@ namespace Geck
         public void AddPerk(int id)
         {
             Perk i = Perklist[id];
-            i.Taken = true;
             Playerperks.Add(i);
         }
 
@@ -625,12 +629,30 @@ namespace Geck
             {
                 if (i.Name.Equals(perkname))
                 {
-                    i.Taken = true;
                     Playerperks.Add(i);
                 }
                     
             }
         }
+
+        public void AddAppliedPerk(int id)
+        {
+            Perk i = Perklist[id];
+            Appliedperks.Add(i);
+        }
+
+        public void AddAppliedPerk(String perkname)
+        {
+            foreach (Perk i in Perklist)
+            {
+                if (i.Name.Equals(perkname))
+                {
+                    Appliedperks.Add(i);
+                }
+
+            }
+        }
+
 
         public void CreateNewPerk(String Name, String Definition)
         {
@@ -680,19 +702,36 @@ namespace Geck
                 IndentChar = '\t'
             };
 
-            //Start Doc
-            objWriter.WriteStartDocument();
+ 
+
+       /* 
+
+        private bool _Addicted = false;
+        private String _AddictedSubstance; //add to load
+        */
+        //Start Doc
+        objWriter.WriteStartDocument();
 
             objWriter.WriteStartElement("Player");
 
             //Write Player Info
-            objWriter.WriteElementString("name", Name);
+            objWriter.WriteElementString("Name", Name);
             objWriter.WriteElementString("Gender", Gender);
             objWriter.WriteElementString("Race", Race);
             objWriter.WriteElementString("Karma", Karma.ToString());
             objWriter.WriteElementString("CurrencyType", CurrencyName);
-            objWriter.WriteElementString("Currency", Currency.ToString());
-            
+            objWriter.WriteElementString("Currency", Currency.ToString()); //maybe make this some sort of array with all the different currencies
+            objWriter.WriteElementString("Level", Level.ToString());
+            objWriter.WriteElementString("XP", XP.ToString());
+            objWriter.WriteElementString("HP", HP.ToString());
+            objWriter.WriteElementString("MaxHP", MaxHP.ToString());
+            objWriter.WriteElementString("AP", AP.ToString());
+            objWriter.WriteElementString("CarryWeight", Carry_Weight.ToString());
+            objWriter.WriteElementString("SpecialPoints", SpecialPoints.ToString());
+            objWriter.WriteElementString("SkillPoints", Skill_Points.ToString());
+            objWriter.WriteElementString("SkillPointsOnLevel", Skill_Points_On_Level.ToString());
+            objWriter.WriteElementString("Addicted", Addicted.ToString());
+            objWriter.WriteElementString("AddictedSubstance", AddictedSubstance);
 
             //Write Special
             objWriter.WriteElementString("Str", Str.ToString());
@@ -720,14 +759,20 @@ namespace Geck
 
             //Write Other
             objWriter.WriteElementString("Created", Created.ToString());
-            objWriter.WriteElementString("SpecialPoints", SpecialPoints.ToString());
-            objWriter.WriteElementString("SkillPoints", Skill_Points.ToString());
-            objWriter.WriteElementString("SkillPointsOnLevel", Skill_Points_On_Level.ToString());
+
 
             objWriter.WriteStartElement("Perks");
 
             //Wrtie Perks
             foreach (Perk i in Playerperks)
+                objWriter.WriteElementString("Perk", i.GetName());
+
+            objWriter.WriteEndElement();
+
+
+            objWriter.WriteStartElement("AppliedPerks");
+
+            foreach (Perk i in Appliedperks)
                 objWriter.WriteElementString("Perk", i.GetName());
 
             objWriter.WriteEndElement();
@@ -750,13 +795,24 @@ namespace Geck
             XmlNode objXmlCharacter = objXmlDocument.SelectSingleNode("/Player");
             
             //Load Player Info
-            objXmlCharacter.ReadString("name", ref _Name);
+            objXmlCharacter.ReadString("Name", ref _Name);
             objXmlCharacter.ReadString("Gender", ref _Gender);
             objXmlCharacter.ReadString("Race", ref _Race);
             objXmlCharacter.ReadInt("Karma", ref _Karma);
             objXmlCharacter.ReadString("CurrencyType", ref _CurrencyName);
             objXmlCharacter.ReadInt("Currency", ref _Currency);
-
+            objXmlCharacter.ReadInt("Level", ref _Level);
+            objXmlCharacter.ReadInt("XP", ref _XP);
+            objXmlCharacter.ReadInt("HP", ref _HP);
+            objXmlCharacter.ReadInt("MaxHP", ref _MaxHP);
+            objXmlCharacter.ReadInt("AP", ref _AP);
+            objXmlCharacter.ReadInt("CarryWeight", ref _Carry_Weight);
+            objXmlCharacter.ReadInt("SpecialPoints", ref _SpecialPoints);
+            objXmlCharacter.ReadInt("SkillPoints", ref _Skill_Points);
+            objXmlCharacter.ReadInt("SkillPointsOnLevel", ref _Skill_Points_On_Level);
+            objXmlCharacter.ReadBool("Addicted", ref _Addicted);
+            objXmlCharacter.ReadString("AddictedSubstance", ref _AddictedSubstance);
+              
             //Load Special
             objXmlCharacter.ReadInt("Str", ref _Str);
             objXmlCharacter.ReadInt("Per", ref _Per);
@@ -783,9 +839,7 @@ namespace Geck
 
             //Load Other
             objXmlCharacter.ReadBool("Created", ref _Created);
-            objXmlCharacter.ReadInt("SpecialPoints", ref _SpecialPoints);
-            objXmlCharacter.ReadInt("SkillPoints", ref _Skill_Points);
-            objXmlCharacter.ReadInt("SkillPointsOnLevel", ref _Skill_Points_On_Level);
+
 
             //Load Perks
             foreach (XmlElement i in objXmlCharacter.SelectSingleNode("Perks"))
@@ -800,9 +854,22 @@ namespace Geck
                 }
 
             }
-            
+
+            foreach (XmlElement i in objXmlCharacter.SelectSingleNode("AppliedPerks"))
+            {
+                counter = 0;
+                foreach (Perk j in Perklist)
+                {
+                    if (j.GetName().Equals(i.InnerText))
+                        AddAppliedPerk(counter);
+
+                    counter++;
+                }
+
+            }
+
             //Add options to be loaded
-        
+
         }
 
         #endregion

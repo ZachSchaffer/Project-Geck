@@ -70,6 +70,7 @@
             this.lblSpecialPointsRemaining.Size = new System.Drawing.Size(13, 13);
             this.lblSpecialPointsRemaining.TabIndex = 74;
             this.lblSpecialPointsRemaining.Text = "0";
+
             // 
             // lblPer
             // 

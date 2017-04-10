@@ -54,7 +54,7 @@ namespace Geck
 
             lblBarter.Text = (player.Barter.ToString());
 
-            lblEW.Text = (player.End.ToString());
+            lblEW.Text = (player.Energy_Weapons.ToString());
 
             lblExplosives.Text = (player.Explosives.ToString());
 

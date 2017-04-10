@@ -55,7 +55,7 @@ namespace Geck
 
             foreach (Perk i in player.Perklist)
             {
-                if (!(i.Racial) && !(i.Name.Equals("error")) && !i.Taken)
+                if (!(i.Racial) && !(i.Name.Equals("error")) && !player.Playerperks.Contains(i))
                     listBox1.Items.Add(i.Name);
 
             }
@@ -349,6 +349,7 @@ namespace Geck
                 player.Unarmed = (int)numericUpDown13.Value;
                 foreach(Perk i in perkQueue)
                 {
+                    if(!player.Appliedperks.Contains(i))
                     player.AddPerk(i.Name);
 
                 }

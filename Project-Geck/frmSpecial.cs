@@ -12,13 +12,13 @@ namespace Geck
         {
             InitializeComponent();
             player = player1;
-            lblStr.Text = player.GetAttribute("Str").ToString();
-            lblPer.Text = player.GetAttribute("Per").ToString();
-            lblEnd.Text = player.GetAttribute("End").ToString();
-            lblCha.Text = player.GetAttribute("Cha").ToString();
-            lblInt.Text = player.GetAttribute("Int").ToString();
-            lblAgi.Text = player.GetAttribute("Agi").ToString();
-            lblLuc.Text = player.GetAttribute("Luc").ToString();
+            lblStr.Text = player.Str.ToString();
+            lblPer.Text = player.Per.ToString();
+            lblEnd.Text = player.End.ToString();
+            lblCha.Text = player.Cha.ToString();
+            lblInt.Text = player.Int.ToString();
+            lblAgi.Text = player.Agi.ToString();
+            lblLuc.Text = player.Luc.ToString();
             lblSpecialPointsRemaining.Text = player1.GetSpecialPoints().ToString();
 
             if (player.Created)
@@ -49,28 +49,28 @@ namespace Geck
 
         private void IncStr_Click(object sender, EventArgs e)
         {
-            int Strength = player.GetAttribute("Str");
+            int Strength = player.Str;
 
-            if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Str") < 10))
+            if (player.GetSpecialPoints() > 0 && (player.Str < 10))
             {
-                player.SetAttribute("Str", Strength + 1);
+                player.Str--;
                 player.SpecialPoints -= 1;
             }
 
-            else if (player.GetAttribute("Str") < 10)
+            else if (player.Str < 10)
                 MessageBox.Show("You have no remaining SPECIAL points");
 
-            lblStr.Text = (player.GetAttribute("Str").ToString());
+            lblStr.Text = (player.Str.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void DecStr_Click(object sender, EventArgs e)
         {
-            int Strength = player.GetAttribute("Str");
+            int Strength = player.Str;
 
-            if (player.GetAttribute("Str") > 1)
+            if (player.Str > 1)
             {
-                player.SetAttribute("Str", Strength - 1);
+                player.Str--;
                 player.SpecialPoints += 1;
             }
 
@@ -78,7 +78,7 @@ namespace Geck
             else
                 MessageBox.Show("You can not set an attribute lower than 1");
 
-            lblStr.Text = (player.GetAttribute("Str").ToString());
+            lblStr.Text = (player.Str.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
@@ -89,33 +89,33 @@ namespace Geck
 
         private void lblStr_Click(object sender, EventArgs e)
         {
-            lblStr.Text = player.GetAttribute("Str").ToString();
+            lblStr.Text = player.Str.ToString();
         }
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            int Perception = player.GetAttribute("Per");
+            int Perception = player.Per;
 
-            if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Per") < 10))
+            if (player.GetSpecialPoints() > 0 && (player.Per < 10))
             {
-                player.SetAttribute("Per", Perception + 1);
+                player.Per++;
                 player.SpecialPoints -= 1;
             }
 
-            else if (player.GetAttribute("Per") < 10)
+            else if (player.Per < 10)
                 MessageBox.Show("You have no remaining SPECIAL points");
 
-            lblPer.Text = (player.GetAttribute("Per").ToString());
+            lblPer.Text = (player.Per.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void button7_Click_1(object sender, EventArgs e)
         {
-            int Charisma = player.GetAttribute("Cha");
+            int Charisma = player.Cha;
 
-            if (player.GetAttribute("Cha") > 1)
+            if (player.Cha > 1)
             {
-                player.SetAttribute("Cha", Charisma - 1);
+                player.Cha--;
                 player.SpecialPoints += 1;
             }
 
@@ -123,17 +123,17 @@ namespace Geck
             else
                 MessageBox.Show("You can not set an attribute lower than 1");
 
-            lblCha.Text = (player.GetAttribute("Cha").ToString());
+            lblCha.Text = (player.Cha.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            int Perception = player.GetAttribute("Per");
+            int Perception = player.Per;
 
-            if (player.GetAttribute("Per") > 1)
+            if (player.Per > 1)
             {
-                player.SetAttribute("Per", Perception - 1);
+                player.Per--;
                 player.SpecialPoints += 1;
             }
 
@@ -141,34 +141,34 @@ namespace Geck
             else
                 MessageBox.Show("You can not set an attribute lower than 1");
 
-            lblPer.Text = (player.GetAttribute("Per").ToString());
+            lblPer.Text = (player.Per.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-            int Endurance = player.GetAttribute("End");
+            int Endurance = player.End;
 
-            if (player.GetSpecialPoints() > 0 && (player.GetAttribute("End") < 10))
+            if (player.GetSpecialPoints() > 0 && (player.End < 10))
             {
-                player.SetAttribute("End", Endurance + 1);
+                player.End++;
                 player.SpecialPoints -= 1;
             }
 
-            else if (player.GetAttribute("End") < 10)
+            else if (player.End < 10)
                 MessageBox.Show("You have no remaining SPECIAL points");
 
-            lblEnd.Text = (player.GetAttribute("End").ToString());
+            lblEnd.Text = (player.End.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-            int Endurance = player.GetAttribute("End");
+            int Endurance = player.End;
 
-            if (player.GetAttribute("End") > 1)
+            if (player.End > 1)
             {
-                player.SetAttribute("End", Endurance - 1);
+                player.End--;
                 player.SpecialPoints += 1;
             }
 
@@ -176,34 +176,34 @@ namespace Geck
             else
                 MessageBox.Show("You can not set an attribute lower than 1");
 
-            lblEnd.Text = (player.GetAttribute("End").ToString());
+            lblEnd.Text = (player.End.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void button8_Click_1(object sender, EventArgs e)
         {
-            int Charisma = player.GetAttribute("Cha");
+            int Charisma = player.Cha;
 
-            if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Cha") < 10))
+            if (player.GetSpecialPoints() > 0 && (player.Cha < 10))
             {
-                player.SetAttribute("Cha", Charisma + 1);
+                player.Cha++;
                 player.SpecialPoints -= 1;
             }
 
-            else if (player.GetAttribute("Cha") < 10)
+            else if (player.Cha < 10)
                 MessageBox.Show("You have no remaining SPECIAL points");
 
-            lblCha.Text = (player.GetAttribute("Cha").ToString());
+            lblCha.Text = (player.Cha.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void button9_Click_1(object sender, EventArgs e)
         {
-            int Intelligence = player.GetAttribute("Int");
+            int Intelligence = player.Int;
 
-            if (player.GetAttribute("Int") > 1)
+            if (player.Int > 1)
             {
-                player.SetAttribute("Int", Intelligence - 1);
+                player.Int--;
                 player.SpecialPoints += 1;
             }
 
@@ -211,34 +211,34 @@ namespace Geck
             else
                 MessageBox.Show("You can not set an attribute lower than 1");
 
-            lblInt.Text = (player.GetAttribute("Int").ToString());
+            lblInt.Text = (player.Int.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void button10_Click_1(object sender, EventArgs e)
         {
-            int Intelligence = player.GetAttribute("Int");
+            int Intelligence = player.Int;
 
-            if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Int") < 10))
+            if (player.GetSpecialPoints() > 0 && (player.Int < 10))
             {
-                player.SetAttribute("Int", Intelligence + 1);
+                player.Int++;
                 player.SpecialPoints -= 1;
             }
 
-            else if (player.GetAttribute("Int") < 10)
+            else if (player.Int < 10)
                 MessageBox.Show("You have no remaining SPECIAL points");
 
-            lblInt.Text = (player.GetAttribute("Int").ToString());
+            lblInt.Text = (player.Int.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void button11_Click_1(object sender, EventArgs e)
         {
-            int Agility = player.GetAttribute("Agi");
+            int Agility = player.Agi;
 
-            if (player.GetAttribute("Agi") > 1)
+            if (player.Agi > 1)
             {
-                player.SetAttribute("Agi", Agility - 1);
+                player.Agi--;
                 player.SpecialPoints += 1;
             }
 
@@ -246,34 +246,34 @@ namespace Geck
             else
                 MessageBox.Show("You can not set an attribute lower than 1");
 
-            lblAgi.Text = (player.GetAttribute("Agi").ToString());
+            lblAgi.Text = (player.Agi.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void button12_Click_1(object sender, EventArgs e)
         {
-            int Agility = player.GetAttribute("Agi");
+            int Agility = player.Agi;
 
-            if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Agi") < 10))
+            if (player.GetSpecialPoints() > 0 && (player.Agi < 10))
             {
-                player.SetAttribute("Agi", Agility + 1);
+                player.Agi++;
                 player.SpecialPoints -= 1;
             }
 
-            else if (player.GetAttribute("Agi") < 10)
+            else if (player.Agi < 10)
                 MessageBox.Show("You have no remaining SPECIAL points");
 
-            lblAgi.Text = (player.GetAttribute("Agi").ToString());
+            lblAgi.Text = (player.Agi.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void button13_Click_1(object sender, EventArgs e)
         {
-            int Luck = player.GetAttribute("Luc");
+            int Luck = player.Luc;
 
-            if (player.GetAttribute("Luc") > 1)
+            if (player.Luc > 1)
             {
-                player.SetAttribute("Luc", Luck - 1);
+                player.Luc--;
                 player.SpecialPoints += 1;
             }
 
@@ -281,24 +281,24 @@ namespace Geck
             else
                 MessageBox.Show("You can not set an attribute lower than 1");
 
-            lblLuc.Text = (player.GetAttribute("Luc").ToString());
+            lblLuc.Text = (player.Luc.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
         private void button14_Click_1(object sender, EventArgs e)
         {
-            int Luck = player.GetAttribute("Luc");
+            int Luck = player.Luc;
 
-            if (player.GetSpecialPoints() > 0 && (player.GetAttribute("Luc") < 10))
+            if (player.GetSpecialPoints() > 0 && (player.Luc < 10))
             {
-                player.SetAttribute("Luc", Luck + 1);
+                player.Luc++;
                 player.SpecialPoints -= 1;
             }
 
-            else if (player.GetAttribute("Luc") < 10)
+            else if (player.Luc < 10)
                 MessageBox.Show("You have no remaining SPECIAL points");
 
-            lblLuc.Text = (player.GetAttribute("Luc").ToString());
+            lblLuc.Text = (player.Luc.ToString());
             lblSpecialPointsRemaining.Text = player.GetSpecialPoints().ToString();
         }
 
@@ -322,5 +322,7 @@ namespace Geck
             }
           
         }
+
+       
     }
 }
